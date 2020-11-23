@@ -17,11 +17,11 @@
     - H.264
 - Major Components:
   - [Linux 4.19.35](https://github.com/SolidRun/linux-stable/tree/linux-4.19.y-imx8)
-  - NXP Graphics SDK 6.4.3.p0
+  - NXP Graphics SDK 6.4.0.p1
 
 ## Download
 
-- [i.MX8MM Hummingboard Pulse, microSD bootable image](https://images.solid-build.xyz/IMX8/Debian/sr-imx8-debian-bullseye-20201020-cli-imx8mm-sdhc-hummingboard-pulse.img.xz)
+- [i.MX8MM Hummingboard Pulse, microSD bootable](https://images.solid-build.xyz/IMX8/Debian/sr-imx8-debian-bullseye-20201020-cli-imx8mm-sdhc-hummingboard-pulse.img.xz)
 - [i.MX8MQ Cubox Pulse, microSD bootable](https://images.solid-build.xyz/IMX8/Debian/sr-imx8-debian-bullseye-20201020-cli-imx8mq-sdhc-cubox-pulse.img.xz)
 - [i.MX8MQ HummingBoard Pulse, microSD bootable](https://images.solid-build.xyz/IMX8/Debian/sr-imx8-debian-bullseye-20201020-cli-imx8mq-sdhc-hummingboard-pulse.img.xz)
 
@@ -33,10 +33,10 @@ All images are designed for raw deployment byte by byte (**not as a file**) to b
 
 ### Install to eMMC
 
-The eMMC is accessible from the running system as `/dev/mmcblk0`. Install the
-Debian software image to eMMC by writing the image directly to `/dev/mmcblk0`:
+The eMMC is accessible from the running system as `/dev/mmcblk2`. Install the
+Debian software image to eMMC by writing the image directly to `/dev/mmcblk2`:
 
-	xzcat sr-imx8-debian-buster-20191120-cli-imx8mq-sdhc.img.xz | dd of=/dev/mmcblk0 bs=4k conv=fdatasync
+	xzcat sr-imx8-debian-buster-20191120-cli-imx8mq-sdhc.img.xz | dd of=/dev/mmcblk2 bs=4k conv=fdatasync
 
 Set SW3 DIP switches to boot from eMMC as documented in the [HummingBoard
 Pulse Boot
