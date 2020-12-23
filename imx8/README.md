@@ -6,13 +6,13 @@
   - [Bullseye (testing) - SR Release 2 (latest)](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr2.md)
 - **Buildroot based**
   - [Buildroot based mini distribution - Source code](https://github.com/SolidRun/imx8mp_build)
-  - [Buildroot based mini distribution - Ready to boot images](https://images.solidrundev.com/IMX8/imx8mp_build)
+  - [Buildroot based mini distribution - Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_build)
 - **Yocto Zeus based on 5.4.x-BSP 2.2.0**
   - [Source code](https://github.com/SolidRun/meta-solidrun-arm-imx8/tree/zeus-imx8mp)
   - Ready to boot images coming soon
 - **Android 10**
   - Source code coming soon
-  - [Ready to boot snapshot image](https://images.solidrundev.com/IMX8/Android)
+  - [Ready to boot snapshot image](https://images.solid-run.com/IMX8/Android)
 - **Linux**
   - [5.4.47 (latest)](https://github.com/SolidRun/linux-stable/tree/linux-5.4.y-imx8)
 
