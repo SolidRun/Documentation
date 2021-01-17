@@ -9,7 +9,7 @@
   - [Buildroot based mini distribution - Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_build)
 - **Yocto Zeus based on 5.4.x-BSP 2.2.0**
   - [Source code](https://github.com/SolidRun/meta-solidrun-arm-imx8/tree/zeus-imx8mp)
-  - Ready to boot images coming soon
+  - [Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_yocto_zeus-5.4.47-2.2.0)
 - **Android 10**
   - Source code coming soon
   - [Ready to boot snapshot image](https://images.solid-run.com/IMX8/Android)
