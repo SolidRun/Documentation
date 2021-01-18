@@ -3,7 +3,8 @@
 ## i.MX8M Plus
 
 - **Debian**
-  - [Bullseye (testing) - SR Release 2 (latest)](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr2.md)
+  - [Bullseye (testing) - SR Release 3 (latest)](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr3.md)
+  - [Bullseye (testing) - SR Release 2](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr2.md)
 - **Buildroot based**
   - [Buildroot based mini distribution - Source code](https://github.com/SolidRun/imx8mp_build)
   - [Buildroot based mini distribution - Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_build)
