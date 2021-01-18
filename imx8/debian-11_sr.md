@@ -78,7 +78,7 @@ Connect to the serial console with a terminal emulator of choice, then power on 
 
 Now is the time to override the name of device-tree for Cubox Pulse:
 
-    setenv fdtfile fsl-imx8mq-cubox-pulse.dtb
+    setenv fdtfile imx8mq-cubox-pulse.dtb
     saveenv
 
 This setting is permanent as long as the boot sectors of this particular microSD aren’t overridden, e.g. by writing a new image to it.
