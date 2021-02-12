@@ -4,7 +4,7 @@ It is currently available for the MacchiatoBin only, while we are working on ext
 
 ## Prebuilt Binaries
 
-Usable firmware binaries are available at https://images.solid-build.xyz/8040/UEFI/.
+Usable firmware binaries are available at https://images.solid-run.com/8040/UEFI.
 
 ## Scripted Build using a Container
 

@@ -19,7 +19,7 @@ Debian focuses on stability and security of its releases. As a result, new featu
 
 ### Download and Install
 
-All images are available for download at https://images.solid-build.xyz/IMX6/Debian/. Please scroll to the bottom to find a log of important changes.
+All images are available for download at https://images.solid-run.com/IMX6/Debian. Please scroll to the bottom to find a log of important changes.
 Several tools are available for writing them to block storage, including etcher.io, win32diskimager and dd. Please make sure to decompress them first!
 
 Installation also works through the [Ignition](https://developer.solid-run.com/knowledge-base/ignition/) installer: [Flash Ignition to an SD card](https://developer.solid-run.com/knowledge-base/flash-a-sd-card/), then boot it on the device to download and install the latest Debian automatically.
@@ -34,7 +34,7 @@ If you have the optional eMMC on your SOM use these instructions to install Debi
 
 3. Download the Debian image:
 
-       wget https://images.solid-build.xyz/IMX6/Debian/sr-imx6-debian-buster-cli-20190906.img.xz
+       wget https://images.solid-run.com/IMX6/Debian/sr-imx6-debian-buster-cli-20190906.img.xz
 
 4. As root write the image to the eMMC:
 
@@ -42,8 +42,8 @@ If you have the optional eMMC on your SOM use these instructions to install Debi
 
 5. Download bootloader images:
 
-       wget https://images.solid-build.xyz/IMX6/U-Boot/spl-imx6-sdhc.bin
-       wget https://images.solid-build.xyz/IMX6/U-Boot/u-boot-imx6-sdhc.img
+       wget https://images.solid-run.com/IMX6/U-Boot/spl-imx6-sdhc.bin
+       wget https://images.solid-run.com/IMX6/U-Boot/u-boot-imx6-sdhc.img
 
 6. As root write the bootloader images to the eMMC:
 
@@ -240,7 +240,7 @@ The instructions below are a subset of [chapter 4](https://www.debian.org/releas
 
    - (Re-) Install U-Boot if necessary
 
-     If the boot media has been used as install target, U-Boot has to be reinstalled as documented on our [U-Boot page](https://developer.solid-run.com/knowledge-base/i-mx6-u-boot/). Both the [SolidRun U-Boot builds](https://images.solid-build.xyz/IMX6/U-Boot/) and [those from Debian](http://debian.backend.mirrors.debian.org/debian/dists/buster/main/installer-armhf/current/images/u-boot/MX6_Cubox-i/) are usable.
+     If the boot media has been used as install target, U-Boot has to be reinstalled as documented on our [U-Boot page](https://developer.solid-run.com/knowledge-base/i-mx6-u-boot/). Both the [SolidRun U-Boot builds](https://images.solid-run.com/IMX6/U-Boot/) and [those from Debian](http://debian.backend.mirrors.debian.org/debian/dists/buster/main/installer-armhf/current/images/u-boot/MX6_Cubox-i/) are usable.
 
    - Enable Non-Free packages
 

@@ -5,16 +5,16 @@ As a proof of concept and for prototyping purposes we provide the option to run 
 
 | Release | Clearfog base | Clearfog Pro | Clearfog GTR |
 | --- | --- | --- | --- |
-| 10 Buster  ([images.solid-build.xyz](https://images.solid-build.xyz/A38X/Debian/)) | Yes | Yes | Yes |
-|  9 Stretch ([images.solid-build.xyz](https://images.solid-build.xyz/A38X/Debian/)) | Yes | Yes | No |
-|  8 Jessie  ([images.solid-build.xyz](https://images.solid-build.xyz/A38X/Debian/)) | Yes | Yes | No |
+| 10 Buster  ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | Yes |
+|  9 Stretch ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | No |
+|  8 Jessie  ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | No |
 ||||
 | 10 Buster  ([debian.org](https://www.debian.org/)) | Yes | Yes | No |
 |  9 Stretch ([debian.org](https://www.debian.org/)) | Yes | Yes | No |
 |  8 Jessie  ([debian.org](https://www.debian.org/)) | No  | No  | No |
 
 ## Reference Images
-Readily usable images of Debian are available at [images.solid-build.xyz](https://images.solid-build.xyz/A38X/Debian/).
+Readily usable images of Debian are available at [images.solid-run.com](https://images.solid-run.com/A38X/Debian).
 They are intended to be used with any block storage device, and **do not come with a boot-loader** Please refer to our [A38X U-Boot page](https://developer.solid-run.com/knowledge-base/a388-u-boot/) for installation instructions.
 
 **Default username and password are `debian` and `debian`** - with sudo privileges.
@@ -194,7 +194,7 @@ Installation instructions follow.
    - armada-388-clearfog.dtb
 5. Create a directory named **extlinux** in the USB storage device
 6. Copy the file **extlinux.conf** from the archive into the **extlinux** directory
-7. Copy the latest Debian image (**.img.\*z** suffix) from [here](https://images.solid-build.xyz/A38X/Debian/) to the USB storage device
+7. Copy the latest Debian image (**.img.\*z** suffix) from [here](https://images.solid-run.com/A38X/Debian) to the USB storage device
 8. Set the Clearfog boot select DIP switches to UART boot:
    - For Clearfog Pro set to 11110
    - For Clearfog Base set to 01001
@@ -274,7 +274,7 @@ Installation instructions follow.
 6. Copy the file extlinux.conf from the archive into the extlinux directory
 
 7. Copy the latest Debian image (`.img.*z` suffix) from
-   [here](https://images.solid-build.xyz/A38X/Debian/) to the USB storage
+   [here](https://images.solid-run.com/A38X/Debian) to the USB storage
    device
 
 8. Set the Clearfog GTR boot select DIP switches to eMMC boot: 00111

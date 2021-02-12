@@ -16,9 +16,9 @@
 
 ## Download
 
-- [i.MX8MM Hummingboard Pulse, microSD bootable](https://images.solid-build.xyz/IMX8/Debian/sr-imx8-debian-bullseye-20201123-cli-imx8mm-sdhc-hummingboard-pulse.img.xz)
-- [i.MX8MP HummingBoard Pulse, microSD bootable](https://images.solid-build.xyz/IMX8/Debian/sr-imx8-debian-bullseye-20201123-cli-imx8mp-sdhc-hummingboard-pulse.img.xz)
-- [i.MX8MQ HummingBoard Pulse, microSD bootable](https://images.solid-build.xyz/IMX8/Debian/sr-imx8-debian-bullseye-20201123-cli-imx8mq-sdhc-hummingboard-pulse.img.xz)
+- [i.MX8MM Hummingboard Pulse, microSD bootable](https://images.solid-run.com/IMX8/Debian/sr-imx8-debian-bullseye-20201123-cli-imx8mm-sdhc-hummingboard-pulse.img.xz)
+- [i.MX8MP HummingBoard Pulse, microSD bootable](https://images.solid-run.com/IMX8/Debian/sr-imx8-debian-bullseye-20201123-cli-imx8mp-sdhc-hummingboard-pulse.img.xz)
+- [i.MX8MQ HummingBoard Pulse, microSD bootable](https://images.solid-run.com/IMX8/Debian/sr-imx8-debian-bullseye-20201123-cli-imx8mq-sdhc-hummingboard-pulse.img.xz)
 
 # Documentation
 

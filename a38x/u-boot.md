@@ -1,6 +1,6 @@
 ## Download Binaries
 
-We are automatically building binaries whenever code is pushed to our [U-Boot repository on github](https://github.com/SolidRun/u-boot/tree/v2018.01-solidrun-a38x), currently tracking the **v2018.01-solidrun-a38x** branch. Please find the results at https://images.solid-build.xyz/A38X/U-Boot/.
+We are automatically building binaries whenever code is pushed to our [U-Boot repository on github](https://github.com/SolidRun/u-boot/tree/v2018.01-solidrun-a38x), currently tracking the **v2018.01-solidrun-a38x** branch. Please find the results at https://images.solid-run.com/A38X/U-Boot.
 
 ## Installing automatically (SPI, eMMC, M.2 SSD)
 

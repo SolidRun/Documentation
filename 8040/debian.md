@@ -6,7 +6,7 @@ As a proof of concept and for prototyping purposes we provide the option to run 
 - **Clearfog GT 8k**
 
 ## Reference Images
-Readily usable images of Debian Buster are available at [images.solid-build.xyz](https://images.solid-build.xyz/8040/).
+Readily usable images of Debian Buster are available at [images.solid-run.com](https://images.solid-run.com/8040).
 They are intended to be used with a microSD card and ship with a suitable build of U-Boot already included.
 **Default username and password are `debian` and `debian`** - with sudo privileges.
 
