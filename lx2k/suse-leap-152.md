@@ -88,6 +88,30 @@ In case of success a prompt similar to below will appear:
 
        sudo ls-addni dpmac.9
 
+## Add service to enable the SFP interfaces in the boot time
+
+1. Create a service file
+
+        cat > /usr/lib/systemd/system/dpmac@.service << EOF
+        [Unit]
+        Description=SFP+ Ports manual activation
+        
+        [Service]
+        Type=oneshot
+        Restart=never
+        ExecStart=/usr/bin/sleep %i ; /usr/sbin/ls-addni dpmac.%i
+        
+        [Install]
+        WantedBy=network.target
+        
+        EOF
+
+2. Enable the service
+
+        sudo systemctl daemon-reload
+        sudo systemctl enable dpmac@7 dpmac@8 dpmac@9 dpmac@10
+        sudo systemctl start dpmac@7 dpmac@8 dpmac@9 dpmac@10
+
 ## Known Issues ##
 
 - sometimes reboot doesn't actually reboot but rather hang at `[ 1255.019997] reboot: Restarting system`.
