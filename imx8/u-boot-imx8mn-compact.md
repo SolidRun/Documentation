@@ -40,6 +40,7 @@ Building ATF is as follows – *make sure you have set your ARCH and CROSS_COMPI
 ### Extract and copy firmware
 
 Extract the NXP firmware archive and accept the end user agreement
+    
     cd ${ROOTDIR}
     chmod +x ${FW_VERSION}.bin
     ${ROOTDIR}/${FW_VERSION}.bin
