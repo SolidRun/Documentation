@@ -33,7 +33,7 @@ For instance if the toolchain was extracted under /opt/imx8m/toolchain/gcc-linar
 
 Building ATF is as follows – *make sure you have set your ARCH and CROSS_COMPILE environment variables as noted above*
 
-    cd ${ROOTDIR}/arm-trusted-firmware
+    cd ${ROOTDIR}/imx-atf
     make PLAT=imx8mn bl31
     cp build/imx8mn/release/bl31.bin ${ROOTDIR}/uboot-imx/
 
