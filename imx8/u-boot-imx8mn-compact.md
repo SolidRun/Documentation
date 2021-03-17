@@ -55,6 +55,7 @@ Build U-Boot and generate the image - *make sure you have set your ARCH and CROS
     
     cd ${ROOTDIR}/uboot-imx/
     make imx8mn_solidrun_defconfig
+    export ATF_LOAD_ADDR=0x960000
     make flash.bin
 
 The result file is -
