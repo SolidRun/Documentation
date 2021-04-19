@@ -3,7 +3,7 @@
 ## Summary
 
 - Upstream Release: Debian 11 (testing)
-- SolidRun Release: 4
+- SolidRun Release: 6
 - Hardware
   - i.MX8MM Hummingbord Pulse
   - i.MX8MP Hummingbord Pulse
