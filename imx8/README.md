@@ -11,6 +11,9 @@
 - **Buildroot based**
   - [Buildroot based mini distribution - Source code](https://github.com/SolidRun/imx8mp_build)
   - [Buildroot based mini distribution - Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_build)
+- **Yocto Gatesgarth based on 5.10.x-BSP 1.x.x**
+    - [Source code](https://github.com/SolidRun/meta-solidrun-arm-imx8/tree/gatesgarth-imx8mp)
+    - [Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_yocto_gategarth-5.10.9-1.1.0)
 - **Yocto Zeus based on 5.4.x-BSP 2.x.x**
   - [Source code](https://github.com/SolidRun/meta-solidrun-arm-imx8/tree/zeus-imx8mp)
   - [Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_yocto_zeus-5.4.x-2.x.0)
