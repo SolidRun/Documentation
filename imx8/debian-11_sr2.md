@@ -45,50 +45,9 @@ Once you are greeted by a login prompt, the default username and password are bo
 
 ## Known Issues
 
-### mini-PCIe by default not functional on i.MX8MQ HummingBoard Pulse
+### mini-PCIe not functional on i.MX8MQ
 
-In default configuration of Debian images, the mini-PCIe slot on the HummingBoard Pulse is not functional. When combined with a microSOM that has WiFi - the corresponding pcie controller is blocked and mini-PCIe can not be used in the first place.
-
-For i.MX8MQ SOMs **without** WiFi however, the port can be enabled on images dated *Sept. 14. 2020* or later, by using the serial console exposed through the microUSB port with a serial terminal emulator of choice, such as [tio](https://tio.github.io/) or [putty](https://www.putty.org/):
-
-1. breaking into U-Boot (press any key before the 3 seconds timeout prompt)
-
-
-       U-Boot SPL 2018.11-g768f3f3 (Aug 04 2020 - 10:24:09 +0000)
-       PMIC:  PFUZE100 ID=0x10
-       Normal Boot
-       Trying to boot from MMC2
-       
-       
-       U-Boot 2018.11-g768f3f3 (Aug 04 2020 - 10:24:09 +0000)
-       
-       CPU:   Freescale i.MX8MQ rev2.0 at 1000 MHz
-       Reset cause: POR
-       Model: SolidRun i.MX8MQ HummingBoard Pulse
-       DRAM:  1 GiB
-       MMC:   FSL_SDHC: 0, FSL_SDHC: 1
-       Loading Environment from MMC... *** Warning - bad CRC, using default environment
-       
-       In:    serial
-       Out:   serial
-       Err:   serial
-       Net:   
-       Warning: ethernet@30be0000 (eth0) using random MAC address - d2:63:b4:50:9c:21
-       eth0: ethernet@30be0000
-       Hit any key to stop autoboot:  0
-       => 
-
-2. choosing the devicetree file for SoMs without WiFi
-
-       => setenv fdtfile imx8mq-hummingboard-pulse-nowifi.dtb
-       => saveenv
-       Saving Environment to MMC... Writing to MMC(1)... OK
-
-3. booting ahead
-
-       => boot
-
-Note: These changes are permanent only to this particular installation of U-Boot - and might revert on rtc reset or change to other images. We are working on a way to autodetect the SoM - but at this point manual selection is still required :(
+This is a problem with NXPs 5.4 kernel release, which does not properly support pcie on the i.MX8MQ SoC.
 
 ## Customize
 
