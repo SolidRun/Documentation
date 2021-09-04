@@ -8,8 +8,195 @@ Debian focuses on stability and security of its releases. As a result, new featu
 
 ## Official SolidRun Images
 
-New Releases starting with Debian 11 are now available from [our GitHub Documentation pages](https://github.com/SolidRun/Documentation/tree/bsp/imx6).
-Previous releases can still be accessed [here](https://github.com/SolidRun/Documentation/blob/bsp/imx6/debian-legacy.md).
+### Support Matrix
+
+| Release | Support | Window-Systems for Multimedia | Accelerated Desktops |
+| --- | --- | --- | --- |
+| Buster | Yes | Framebuffer, X11 | Mate |
+| Stretch | Yes | Framebuffer, Wayland | Weston |
+| Jessie | Yes | Framebuffer, X11 | Mate |
+| Wheezy | Expired | Framebuffer, X11 | XFCE |
+
+### Download and Install
+
+All images are available for download at https://images.solid-run.com/IMX6/Debian. Please scroll to the bottom to find a log of important changes.
+Several tools are available for writing them to block storage, including etcher.io, win32diskimager and dd. Please make sure to decompress them first!
+
+Installation also works through the [Ignition](https://developer.solid-run.com/knowledge-base/ignition/) installer: [Flash Ignition to an SD card](https://developer.solid-run.com/knowledge-base/flash-a-sd-card/), then boot it on the device to download and install the latest Debian automatically.
+
+### Install to eMMC
+
+If you have the optional eMMC on your SOM use these instructions to install Debian on the eMMC and boot from there.
+
+1. Set the [boot select jumpers](https://developer.solid-run.com/knowledge-base/hummingboard-edge-gate-boot-jumpers/) to SD card
+
+2. Boot from SD
+
+3. Download the Debian image:
+
+       wget https://images.solid-run.com/IMX6/Debian/sr-imx6-debian-buster-cli-20190906.img.xz
+
+4. As root write the image to the eMMC:
+
+       xz -dc sr-imx6-debian-buster-cli-20190906.img.xz | dd of=/dev/mmcblk2 bs=4M conv=fsync
+
+5. Download bootloader images:
+
+       wget https://images.solid-run.com/IMX6/U-Boot/spl-imx6-sdhc.bin
+       wget https://images.solid-run.com/IMX6/U-Boot/u-boot-imx6-sdhc.img
+
+6. As root write the bootloader images to the eMMC:
+
+       dd if=spl-imx6-sdhc.bin of=/dev/mmcblk2 bs=1K seek=1 conv=fdatasync
+       dd if=u-boot-imx6-sdhc.img of=/dev/mmcblk2 bs=1K seek=69 conv=fdatasync
+
+7. Shut the system down with the `poweroff` command
+
+8. Disconnect power source
+
+9. Set the boot select jumpers to eMMC boot
+
+10. Boot the system from eMMC
+
+### Get Started
+
+Once you are greeted by a login prompt, the default username and password are both "debian". For security reasons there is **no** root password! If you really need one, you can run `sudo passwd root` to set your own.
+
+### Networking
+
+Connman comes preinstalled on all images to facilitate easier network management, especially for wifi and tethering. Please refer to the [documentation](https://01.org/connman/documentation) for more information.
+
+### Accelerated OpenGL-ES
+
+The drivers for the Vivante GPU that is part of i.MX6 SoCs are available as packages from our repository to be installed with apt. There are variants for Framebuffer, Wayland and X11:
+
+- Framebuffer:
+  - runtime: `imx-gpu-viv imx-gpu-viv-fb`
+  - development: `imx-gpu-viv-dev imx-gpu-viv-fb-dev`
+- Wayland (TBD)
+- X11
+  - driver: `xserver-xorg-video-imx-viv`
+  - runtime: `imx-gpu-viv imx-gpu-viv-x11`
+  - development: `imx-gpu-viv-dev imx-gpu-viv-x11-dev`
+
+When all variants are installed side by side, the default is selected through `update-alternatives` by configuring the `vivante-gal` link group:
+
+    sudo update-alternatives --config vivante-gal
+
+#### Demos
+- eglinfo
+
+  A small application for printing version and feature information of the active EGL and OpenGl-ES implementation. It is available [here on github](https://github.com/dv1/eglinfo) and installable through apt from our bsp repository:
+
+      apt install eglinfo-fb
+      # or any of eglinfo-wl eglinfo-x11
+
+- glmark2
+
+  Benchmark for OpenGL-ES 2.0 - available [here on github](https://github.com/glmark2/glmark2).
+  Instructions for building and running from source:
+
+      sudo apt install build-essential git imx-gpu-viv-fb-dev imx-gpu-viv-dev libjpeg-dev libpng-dev pkg-config python
+      git clone -b fbdev https://github.com/Josua-SR/glmark2.git
+      cd glmark2
+      ./waf configure --with-flavors=fbdev-glesv2
+      ./waf build -j4
+      sudo ./waf install
+
+      glmark2-es2-fbdev
+
+### Accelerated Video Decoding and Playback
+
+While directly using the VPU and IPU libraries provided by NXP is possible, that use-case goes beyond the scope of this document.
+Instead we are using the [GStreamer 1.0 plugins for i.MX platforms](https://github.com/Freescale/gstreamer-imx) to make use of those acceleration blocks in the SoC.
+
+There are variants for Framebuffer, Wayland and X11:
+- `gstreamer1.0-imx-fb`
+- `gstreamer1.0-imx-wl`
+- `gstreamer1.0-imx-x11`
+
+Alike the GPU userspace, when more than one variant is installed at a time, the desired graphics system can be chosen through `update-alternatives`:
+
+    update-alternatives --config gst1.0-imx
+
+#### Examples
+
+The examples below depend on a number of additional gstreamer elements and utilities:
+
+    sudo apt install gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-alsa gstreamer1.0-tools
+    sudo apt install gstreamer1.0-imx-fb
+
+And the [Project Peach](https://peach.blender.org/) [big buck bunny 1080p 30Hz](http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4) as demo.
+
+- automatic with playbin element
+
+      gst-launch-1.0 playbin uri=http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4
+
+- automatic with playbin (720p)
+
+      gst-launch-1.0 playbin uri=http://distribution.bbb3d.renderfarming.net/video/mp4/big_buck_bunny_720p_surround.avi
+
+- explicit vpu + g2d - video only
+
+      gst-launch-1.0 \
+        filesrc location=bbb_sunflower_1080p_30fps_normal.mp4 ! \
+        qtdemux ! h264parse ! imxvpudec ! \
+        imxg2dvideosink
+
+- explicit a52dec + alsa + sgtl5k (3.5mm audio jack) - audio only
+
+      gst-launch-1.0 \
+        filesrc location=bbb_sunflower_1080p_30fps_normal.mp4 ! \
+        qtdemux ! ac3parse ! a52dec ! \
+        alsasink device=default:CARD=Codec
+
+## Customize
+
+### Using custom Device-Tree Blobs
+
+Until recently the system would replace any custom DTB files in /boot on upgrade of the kernel package. Now there is a way to get rid of this behaviour:
+
+#### Images after 25/08/2016
+
+The DTBs managed by the Distribution are now located under /boot/dtb-<VERSION>. Custom ones can be placed directly in /boot. That is now the place where u-boot looks first!
+
+#### Images before 25/08/2016
+
+These images did not have U-Boot patched appropriately. To use anyway, a few dangerous steps need to be performed:
+
+1. Install latest U-Boot package:
+
+       apt-get update && apt-get upgrade
+
+   **Make sure that the u-boot package has at least version 2013.10.1464952045-1! The version can be checked by running `dpkg -l u-boot-cubox-i`**
+
+2. Copy U-Boot to the bootsector:
+   Follow the instructions available on [U-Boot](https://developer.solid-run.com/knowledge-base/i-mx6-u-boot/), section **Writing U-Boot to the SD card**. Be sure to do this on the device itself, using `cubox-i-spl` and `u-boot.img` in `/boot`, to `/dev/mmcblk0`.
+
+3. Wipe U-Boot Environment:
+   reboot, and press a key to activate u-boot console. Then run:
+
+       env default -a
+       saveenv
+       reset
+
+4. Finally delete the transitional package `dtb-subfolder-compat`:
+
+       sudo apt-get remove dtb-subfolder-compat
+
+   **This will remove kernel-3.14.y-fslc-imx6-sr. Make sure that the replacement linux-image-3.14.y-fslc-imx6-sr was already installed.**
+
+### Fork board-support packages
+
+In order to properly support the i.MX6 including all of its multimedia capabilities, many custom debs that are not part of Debian have been created. These include an optimized kernel, the Vivante GPU userspace, gstreamer plugins and many more. There are 2 ways for getting the package sources:
+
+1. use apt-get source, e.g.: `apt-get source linux-image-4.9.y-imx6-sr`
+
+2. browse the [SolidRun github](https://github.com/SolidRun), and the old [packaging organization](https://github.com/mxOBS)
+
+All of our packages can be built by invoking dpkg-buildpackage directly, or through git-buildpackage. If there are specific questions regarding packaging of customizations please contact us.
+
+Also note that [our instance](https://obs.solid-build.xyz/) of the [OpenBuildService](https://openbuildservice.org/) which we use to automate builds is available to the public on request.
 
 ## Pure Debian (upstream)
 

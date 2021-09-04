@@ -54,6 +54,50 @@ For remote sessions, ssh is preconfigured. Check your router for finding the dev
 
 ## Usage Hints
 
+### Install to eMMC
+
+If you have the optional eMMC on your SOM use these instructions to install Debian on the eMMC and boot from there.
+
+1. Set the [boot select jumpers](https://developer.solid-run.com/knowledge-base/hummingboard-edge-gate-boot-jumpers/) to SD card
+
+2. Boot from SD
+
+3. Download the Debian image
+
+4. As root write the downloaded image to the eMMC:
+
+       xz -dc sr-imx6-debian-bullseye-20210904-cli-sdhc.img.xz | dd of=/dev/mmcblk2 bs=4M conv=fsync
+
+5. Find bootloader images:
+
+  - if running Debian 11 already, binaries are installed in */usr/lib/u-boot/mx6cuboxi/*:
+
+        cp -v /usr/lib/u-boot/mx6cuboxi/{SPL,u-boot.img} ./
+
+  - otherwise these binaries are part of the image that was just written to eMMC, which can be mounted for access:
+
+        mount -o ro /dev/mmcblk2 /mnt
+        cp -v /mnt/usr/lib/u-boot/mx6cuboxi/{SPL,u-boot.img} ./
+        umount /mnt
+
+  - finally binaries of the SolidRun u-boot fork are available for download:
+
+        wget -O SPL https://images.solid-run.com/IMX6/U-Boot/spl-imx6-sdhc.bin
+        wget -O u-boot.img https://images.solid-run.com/IMX6/U-Boot/u-boot-imx6-sdhc.img
+
+6. As root write the bootloader images to the eMMC:
+
+       dd if=SPL of=/dev/mmcblk2 bs=1K seek=1 conv=fdatasync
+       dd if=u-boot.img of=/dev/mmcblk2 bs=1K seek=69 conv=fdatasync
+
+7. Shut the system down with the `poweroff` command
+
+8. Disconnect power source
+
+9. Set the boot select jumpers to eMMC boot
+
+10. Boot the system from eMMC
+
 ### Wayland
 
 While it is possible to install full destop environmnts such as Gnome, for testing functionality the reference compositor weston should be used:
