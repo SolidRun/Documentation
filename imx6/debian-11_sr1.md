@@ -10,6 +10,10 @@
   - HummingBoard Pro
   - HummingBoard Edge
   - HummingBoard Gate
+  - SoCs:
+    - i.MX6 Solo
+    - ~~i.MX6 DualLite~~ (not tested)
+    - i.MX6 Quad
 - Features:
   - Ports:
     - microSD
@@ -20,20 +24,23 @@
     - SoM integrated WiFi+Bluetooth
     - 2x USB-2.0 Type A
     - additional 2x USB-2.0 Type A (HummingBoard Edge/Gate only)
-    - 3.5mm audio jack
+    - SPDIF coax (HummingBoard Base+Pro only)
+    - SPDIF optical (some Cubox-i only) todo
+    - 3.5mm audio jack (HummingBoard only)
     - HDMI
     - ~~MIPI-CSI-2~~ (partially tested)
   - Multimedia:
     ~~- OpenCL~~ (not currently supported)
-    - OpenGL-ES 2.0 todo
+    - OpenGL-ES 2.0
     - GStreamer HW-Accelerated Video Decoder
       - MPEG2
       - ~~MPEG4~~ (not tested)
       - H.264
     - ALSA Audio Playback
-      - ~~HDMI~~ broken
-      - SPDIF (some Cubox-i only)
-      - 3.5mm jack (HummingBoard only)
+      - ~~HDMI~~ (broken: (#993859)[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=993859])
+      - SPDIF coax
+      - SPDIF optical
+      - 3.5mm jack: analog stereo (HummingBoard Pro+Gate+Edge only)
 - Major Components:
   - Linux 5.10 from the Debian project
 
@@ -303,7 +310,7 @@ v4l2-ctl -d /dev/video4 --stream-mmap --stream-to=frame.raw --stream-count=1
 
 ### ALSA Examples
 
-    sudo apt install vorbis-tools
+    sudo apt-get install vorbis-tools
     wget https://github.com/KDE/amarok/raw/master/data/first_run_jingle.ogg
     # play to 3.5mm jack
     ogg123 -d alsa -o dev:dmix:CARD=Codec first_run_jingle.ogg
