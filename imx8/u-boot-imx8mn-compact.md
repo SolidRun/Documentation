@@ -40,7 +40,7 @@ Building ATF is as follows – *make sure you have set your ARCH and CROSS_COMPI
 ### Extract and copy firmware
 
 Extract the NXP firmware archive and accept the end user agreement
-    
+
     cd ${ROOTDIR}
     chmod +x ${FW_VERSION}.bin
     ${ROOTDIR}/${FW_VERSION}.bin
@@ -52,7 +52,7 @@ Extract the NXP firmware archive and accept the end user agreement
 Build U-Boot and generate the image - *make sure you have set your ARCH and CROSS_COMPILE environment variables as noted above*
 
 ## Deploying U-Boot
-    
+
     cd ${ROOTDIR}/uboot-imx/
     make imx8mn_solidrun_defconfig
     export ATF_LOAD_ADDR=0x960000
@@ -60,7 +60,7 @@ Build U-Boot and generate the image - *make sure you have set your ARCH and CROS
 
 The result file is -
 
-    ${ROOTDIR}/uboot-imx/flash.bin 
+    ${ROOTDIR}/uboot-imx/flash.bin
 
 ### to microSD
 
@@ -170,3 +170,42 @@ The result files are –
     Image - kernel image in FIT format
     arch/arm64/boot/dts/freescale/imx8mn-compact.dtb - Compact device tree
 
+
+## Graceful Boot Application
+
+Our source code https://github.com/SolidRun/imx8mp_build/tree/imx8mn includes a graceful boot/reboot application which prevents corruptions of the filesysten due to power loss.
+
+#### Hardware used by application
+
+ -  5[F] Supercapacitor which can supply power to the board for ~10-15 seconds.
+ -  Supercapacitor backup power manager IC.
+ -  I/O expander, connected to the backup power manager IC.
+
+ <b>All these components are part of the board (if assembled).</b>
+
+#### How the application works
+
+The kernel polls the I/O expander, once the kernel detects that the extenral power is off (signal from the supercapacitor backup power manager IC), it throws "RESTART" keys.<br>
+The keys are catched by input-event-daemon, then the daemon reboots the system.<br>
+On boot, U-boot polls the I/O exapnder and won't boot until:
+* An external power source is connected to the board.
+* The capacitor charge is >90% (so it will last for the boot process, until the daemon will be started).
+
+Once these requirement meet, U-boot will boot the system.<br><br>
+
+<b>If you are using our Kernel and U-boot, but you are not using our Buildroot, make sure you have a daemon to catch the thrown keys.</b>
+
+#### Modifying the application
+
+##### Kernel part
+
+In order to remove the kernel part, remove "gpio_keys_polled" node from devicetree.<br>
+The devicetree path is: ```build/linux-imx/arch/arm64/boot/dts/freescale/imx8mn-compact.dts```
+
+##### U-boot part
+
+The default configuration for the U-boot part is checking that an external power source is connected and the capacitor charge is >90%.<br>
+This is configured in the bootcmd environment parameter: ```check_power_connection 2;```.<br>
+The argument "2" indicates that the extenral power connection and capacitor charge should be checked.<br>
+If you just want to check the power connection, change the argument to "1" ```check_power_connection 1;```.<br>
+If you want to cancel the power check, you can delete the check_power_connection part from the bootcmd environment parameter.
