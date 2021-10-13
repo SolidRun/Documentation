@@ -92,7 +92,7 @@ The result file is -
        # calculate u-boot binary size as number of 512-byte blocks (e.g. 1001332 bytes --> #blocks=ceil(1001332/512)=0x7ae)
 
        # select eMMC, data partition
-       mmc dev 0
+       mmc dev 2
        # boot0: mmc dev 0 1
        # boot1: mmc dev 0 2
 
@@ -121,12 +121,12 @@ On Compact the Boot Sequence can be configured through the DIP switches S1. In t
 the DIP switches S1 can be used for selecting the actual boot device:
 
 - **11**: microSD (mmc1)
-- **01(not tested yet)**: eMMC (mmc2)
+- **01**: eMMC (mmc2)
 
 From the U-Boot Shell, the eMMC boot partition is configurabkle with the **mmc partconf** command. It takes either 1, or 4 paramaters:
 
     # print configuration of mmc 2
-    mmc partconf 0
+    mmc partconf 2
     BOOT_ACK: 0x0
     BOOT_PARTITION_ACCESS: 0x0
     PARTITION_ACCESS: 0x0
