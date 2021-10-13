@@ -93,8 +93,8 @@ The result file is -
 
        # select eMMC, data partition
        mmc dev 2
-       # boot0: mmc dev 0 1
-       # boot1: mmc dev 0 2
+       # boot0: mmc dev 2 1
+       # boot1: mmc dev 2 2
 
        # write u-boot binary to eMMC at 32k bytes (64x512 blocks) offset [hex(64)=0x40]
        mmc write ${kernel_addr_r} 0x40 0x7ae
