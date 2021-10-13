@@ -77,7 +77,7 @@ The result file is -
 
        # Boot0
        echo 0 | sudo tee /sys/block/mmcblk0boot0/force_ro
-       sudo dd if=flash.bin of=/dev/mmcblk0boot0 bs=1024 seek=32
+       sudo dd if=flash.bin of=/dev/mmcblk0boot0
 
        # Boot1
        echo 0 | sudo tee /sys/block/mmcblk0boot1/force_ro
