@@ -40,7 +40,7 @@ Debian software image to eMMC by writing the image directly to `/dev/mmcblk2`:
 
 Set SW3 DIP switches to boot from eMMC as documented in the [HummingBoard
 Pulse Boot
-Select](https://developer.solid-run.com/knowledge-base/hummingboard-pulse-boot-select/)
+Select](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287343073/HummingBoard+Pulse+and+Ripple+Boot+Select)
 article.
 
 ## Get Started
@@ -73,7 +73,7 @@ Connect to the serial console with a terminal emulator of choice, then power on 
     Error: ethernet@30be0000 address not set.
     Error: ethernet@30be0000 address not set.
     eth-1: ethernet@30be0000
-    Hit any key to stop autoboot:  0 
+    Hit any key to stop autoboot:  0
     =>
 
 Now is the time to override the name of device-tree for Cubox Pulse:
@@ -212,17 +212,17 @@ For i.MX8MQ SOMs **without** WiFi however, the port can be enabled on images dat
        PMIC:  PFUZE100 ID=0x10
        Normal Boot
        Trying to boot from MMC2
-       
-       
+
+
        U-Boot 2018.11-g768f3f3 (Aug 04 2020 - 10:24:09 +0000)
-       
+
        CPU:   Freescale i.MX8MQ rev2.0 at 1000 MHz
        Reset cause: POR
        Model: SolidRun i.MX8MQ HummingBoard Pulse
        DRAM:  1 GiB
        MMC:   FSL_SDHC: 0, FSL_SDHC: 1
        Loading Environment from MMC... *** Warning - bad CRC, using default environment
-       
+
        In:    serial
        Out:   serial
        Err:   serial
@@ -230,7 +230,7 @@ For i.MX8MQ SOMs **without** WiFi however, the port can be enabled on images dat
        Warning: ethernet@30be0000 (eth0) using random MAC address - d2:63:b4:50:9c:21
        eth0: ethernet@30be0000
        Hit any key to stop autoboot:  0
-       => 
+       =>
 
 2. choosing the devicetree file for SoMs without WiFi
 

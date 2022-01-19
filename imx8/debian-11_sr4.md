@@ -56,7 +56,7 @@ Debian software image to eMMC by writing the image directly to the data partitio
 
 Set SW3 DIP switches to boot from eMMC as documented in the [HummingBoard
 Pulse Boot
-Select](https://developer.solid-run.com/knowledge-base/hummingboard-pulse-boot-select/)
+Select](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287343073/HummingBoard+Pulse+and+Ripple+Boot+Select)
 article.
 Also make sure to remove any microSD that contains the **same** image that was flashed to eMMC, as it can cause conflicts in rootfs identification.
 

@@ -15,7 +15,7 @@ As a proof of concept and for prototyping purposes we provide the option to run 
 
 ## Reference Images
 Readily usable images of Debian are available at [images.solid-run.com](https://images.solid-run.com/A38X/Debian).
-They are intended to be used with any block storage device, and **do not come with a boot-loader** Please refer to our [A38X U-Boot page](https://developer.solid-run.com/knowledge-base/a388-u-boot/) for installation instructions.
+They are intended to be used with any block storage device, and **do not come with a boot-loader** Please refer to our [A38X U-Boot page](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287212134/A38X+U-Boot) for installation instructions.
 
 **Default username and password are `debian` and `debian`** - with sudo privileges.
 
@@ -53,7 +53,7 @@ All files required are available on the [download page for buster](https://cdima
 
 U-Boot for the Clearfog devices is not part of Debian! That means it needs to be installed and managed seperately.
 
-If the installation media is a microSD, then it can be wise to now install U-Boot to that card by following our instructions on the [U-Boot page](https://developer.solid-run.com/knowledge-base/a38x-u-boot/).
+If the installation media is a microSD, then it can be wise to now install U-Boot to that card by following our instructions on the [U-Boot page](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287212134/A38X+U-Boot).
 
 Otherwise U-Boot has to be loaded via UART or be already available on one of eMMC, microSD, SPI Flash and SSD.
 

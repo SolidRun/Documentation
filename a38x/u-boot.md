@@ -159,7 +159,7 @@ So finally this is how a new configuration is applied:
 
 First configure the board to boot from UART. There are two options to do so:
 
-1. Set the Boot DIP switches to boot from UART ([Bootdevice](https://developer.solid-run.com/knowledge-base/clearfog-boot-select/)).
+1. Set the Boot DIP switches to boot from UART ([Bootdevice](https://solidrun.atlassian.net/wiki/spaces/developer/pages/286655684/ClearFog+A388+Boot+Select)).
 2. Set the Boot DIP switches to something that is **not** connected, e.g. SD/eMMC, or SATA. The BootROM will fall back to UART after a few seconds.
 
 After connecting the serial uart to your PC using a micro-USB-cable, run this command to send U-Boot to the board for execution:
@@ -344,7 +344,7 @@ Any combinations are valid depending on your particular needs.
 
 Verified Boot is a way to ensure that only authenticated code will be executed on a machine. This page provides instructions on setting this up for the startup phase from u-boot to Linux.
 
-Read more here: [Verified Boot](https://developer.solid-run.com/knowledge-base/verified-boot)
+Read more here: [Verified Boot](https://solidrun.atlassian.net/wiki/spaces/developer/pages/286916724/A388+Verified+Boot)
 
 ## Setup Mac-Address
 

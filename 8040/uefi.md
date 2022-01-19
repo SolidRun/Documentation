@@ -107,4 +107,4 @@ First, copy the firmware binary to a FAT filesystem on an internal or removable 
 
 ### From U-Boot
 
-For installing the new firmware binary from U-Boot, follow the [instructions for writing U-Boot to SPI Flash](https://developer.solid-run.com/knowledge-base/armada-8040-machiatobin-u-boot-and-atf/#to-spi-flash)
+For installing the new firmware binary from U-Boot, follow the [instructions for writing U-Boot to SPI Flash](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287178828/A8040+U-Boot+and+ATF#to-SPI-Flash)

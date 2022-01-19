@@ -53,7 +53,7 @@ The instructions below are a subset of [chapter 4](https://www.debian.org/releas
 
    - (Re-) Install U-Boot if necessary
 
-     If the boot media has been used as install target, U-Boot has to be reinstalled as documented on our [U-Boot page](https://developer.solid-run.com/knowledge-base/i-mx6-u-boot/). Both the [SolidRun U-Boot builds](https://images.solid-run.com/IMX6/U-Boot/) and [those from Debian](http://debian.backend.mirrors.debian.org/debian/dists/buster/main/installer-armhf/current/images/u-boot/MX6_Cubox-i/) are usable.
+     If the boot media has been used as install target, U-Boot has to be reinstalled as documented on our [U-Boot page](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287179374/i.MX6+U-Boot). Both the [SolidRun U-Boot builds](https://images.solid-run.com/IMX6/U-Boot/) and [those from Debian](http://debian.backend.mirrors.debian.org/debian/dists/buster/main/installer-armhf/current/images/u-boot/MX6_Cubox-i/) are usable.
 
    - Enable Non-Free packages
 

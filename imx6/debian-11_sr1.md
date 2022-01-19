@@ -65,7 +65,7 @@ For remote sessions, ssh is preconfigured. Check your router for finding the dev
 
 If you have the optional eMMC on your SOM use these instructions to install Debian on the eMMC and boot from there.
 
-1. Set the [boot select jumpers](https://developer.solid-run.com/knowledge-base/hummingboard-edge-gate-boot-jumpers/) to SD card
+1. Set the [boot select jumpers](https://solidrun.atlassian.net/wiki/spaces/developer/pages/286621835/HummingBoard+Edge+Gate+Boot+Jumpers) to SD card
 
 2. Boot from SD
 
@@ -111,7 +111,7 @@ While it is possible to install full destop environmnts such as Gnome, for testi
 
       # install weston
       sudo apt install weston
-      
+
       # start weston FROM A PHYSICAL TERMINAL not remote or serial session
       weston-launch -- --backend=drm-backend.so
       # by default one application is available, the terminal emulator, at the upper left corner.

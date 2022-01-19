@@ -22,13 +22,13 @@ Debian focuses on stability and security of its releases. As a result, new featu
 All images are available for download at https://images.solid-run.com/IMX6/Debian. Please scroll to the bottom to find a log of important changes.
 Several tools are available for writing them to block storage, including etcher.io, win32diskimager and dd. Please make sure to decompress them first!
 
-Installation also works through the [Ignition](https://developer.solid-run.com/knowledge-base/ignition/) installer: [Flash Ignition to an SD card](https://developer.solid-run.com/knowledge-base/flash-a-sd-card/), then boot it on the device to download and install the latest Debian automatically.
+Installation also works through the [Ignition](https://developer.solid-run.com/knowledge-base/ignition/) installer: [Flash Ignition to an SD card](https://solidrun.atlassian.net/wiki/spaces/developer/pages/288129025/Flashing+an+SD+Card), then boot it on the device to download and install the latest Debian automatically.
 
 ### Install to eMMC
 
 If you have the optional eMMC on your SOM use these instructions to install Debian on the eMMC and boot from there.
 
-1. Set the [boot select jumpers](https://developer.solid-run.com/knowledge-base/hummingboard-edge-gate-boot-jumpers/) to SD card
+1. Set the [boot select jumpers](https://solidrun.atlassian.net/wiki/spaces/developer/pages/286621835/HummingBoard+Edge+Gate+Boot+Jumpers) to SD card
 
 2. Boot from SD
 
@@ -171,7 +171,7 @@ These images did not have U-Boot patched appropriately. To use anyway, a few dan
    **Make sure that the u-boot package has at least version 2013.10.1464952045-1! The version can be checked by running `dpkg -l u-boot-cubox-i`**
 
 2. Copy U-Boot to the bootsector:
-   Follow the instructions available on [U-Boot](https://developer.solid-run.com/knowledge-base/i-mx6-u-boot/), section **Writing U-Boot to the SD card**. Be sure to do this on the device itself, using `cubox-i-spl` and `u-boot.img` in `/boot`, to `/dev/mmcblk0`.
+   Follow the instructions available on [U-Boot](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287179374/i.MX6+U-Boot), section **Writing U-Boot to the SD card**. Be sure to do this on the device itself, using `cubox-i-spl` and `u-boot.img` in `/boot`, to `/dev/mmcblk0`.
 
 3. Wipe U-Boot Environment:
    reboot, and press a key to activate u-boot console. Then run:
@@ -240,7 +240,7 @@ The instructions below are a subset of [chapter 4](https://www.debian.org/releas
 
    - (Re-) Install U-Boot if necessary
 
-     If the boot media has been used as install target, U-Boot has to be reinstalled as documented on our [U-Boot page](https://developer.solid-run.com/knowledge-base/i-mx6-u-boot/). Both the [SolidRun U-Boot builds](https://images.solid-run.com/IMX6/U-Boot/) and [those from Debian](http://debian.backend.mirrors.debian.org/debian/dists/buster/main/installer-armhf/current/images/u-boot/MX6_Cubox-i/) are usable.
+     If the boot media has been used as install target, U-Boot has to be reinstalled as documented on our [U-Boot page](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287179374/i.MX6+U-Boot). Both the [SolidRun U-Boot builds](https://images.solid-run.com/IMX6/U-Boot/) and [those from Debian](http://debian.backend.mirrors.debian.org/debian/dists/buster/main/installer-armhf/current/images/u-boot/MX6_Cubox-i/) are usable.
 
    - Enable Non-Free packages
 
