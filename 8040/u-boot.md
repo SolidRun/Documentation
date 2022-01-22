@@ -28,7 +28,8 @@ A cross toolchain targeting arm64 is required. Linaro provides prebuilt toolchai
     cd u-boot
     make mvebu_mcbin-88f8040_defconfig
     # run make menuconfig to customize (optional)
-    # For the Clearfog GT, DEFAULT_DEVICE_TREE needs setting to "armada-8040-clearfog-gt-8k"
+    # for the Clearfog GT, DEFAULT_DEVICE_TREE needs setting to "armada-8040-clearfog-gt-8k"
+    # for the Singleshot, DEFAULT_DEVICE_TREE needs setting to "armada-8040-mcbin-singleshot"
     # --> Device Tree Control --> Default Device Tree for DT control
     make -j4
 
