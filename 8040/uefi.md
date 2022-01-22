@@ -2,83 +2,21 @@
 This page describes how to build, install and update the TianoCore EDK2 firmware for SolidRun Armada 8040-based devices.
 It is currently available for the MacchiatoBin only, while we are working on extending it to the Clearfog GT 8k as well.
 
-## Prebuilt Binaries
+## Certified Binaries
 
-Usable firmware binaries are available at https://images.solid-run.com/8040/UEFI.
+Semihalf has produced an [ARM System Ready ES](https://developer.arm.com/architectures/system-architectures/arm-systemready/es) certified binary for the Macchiatobin Doubleshot board.
+It is available for download from [their GitHub](https://github.com/Semihalf/edk2-platforms/wiki/MacchiatoBin-SH_1.0).
 
-## Scripted Build using a Container
+## Binaries
 
-A docker container can be used to build the uefi firmware in a controlled environment by following the steps below:
+Based on the versions used for the certified binary, we have rebuilds from source available below:
 
-- Create Container Image and Workspace
-
-   The container source and build scripts are managed in [this github repository](https://github.com/Josua-SR/boot-builder/tree/armada-8040-uefi). The steps below clone the repository and build the container image:
-
-       git clone https://github.com/Josua-SR/boot-builder.git -b armada-8040-uefi
-       cd boot-builder
-
-       docker build -t 8040efibldr docker
-
-    The clone has been designed to act as the workspace - keeping source code and build results inside the cloned folder. The steps following are to be run from within the cloned folder, here *boot-builder*.
-
-- Download Source Code
-
-       docker run -v "$PWD:/work" 8040efibldr -u $(id -u) -g $(id -g) -- init
-       docker run -itv "$PWD:/work" 8040efibldr -u $(id -u) -g $(id -g) -- sync
-
-- Compile Firmware Image
-
-       docker run -itv "$PWD:/work" 8040efibldr -u $(id -u) -g $(id -g) -- build
-
-   The resulting firmware binary will be copied to the working directory as `uefi-mcbin-spi.bin`.
+- [MacchiatoBin Doubleshot](https://github.com/Josua-SR/armada-8040-uefi/releases/tag/sr-1.0)
+- [MacchiatoBin Singleshot](https://github.com/Josua-SR/armada-8040-uefi/releases/tag/sr-1.0-ss)
 
 ## Manual Build
 
-### Install a cross-compiler
-
-Either GCC or Clang are suitable for building EDK2. We suggest using the cross-compiler that ships with your distro of choice, or picking up a recent version of the Linaro Toolchain binary releases, e.g. [version 7](https://releases.linaro.org/components/toolchain/binaries/latest-7/aarch64-linux-gnu/).
-
-**The environment variables *GCC5_AARCH64_PREFIX* and *CROSS_COMPILE* in the instructions below must be adapted based on this choice!**
-
-### Download Source Code
-
-All Source-Code is available on GitHub. It is recommended to clone below versions into a new directory for performing the build in. We use "build-edk2" here.
-
-    mkdir build-edk2; cd build-edk2
-    git clone --recurse-submodules https://github.com/tianocore/edk2.git -b edk2-stable201908
-    git clone https://github.com/tianocore/edk2-non-osi.git -b master
-    git clone https://github.com/tianocore/edk2-platforms.git -b master
-    git clone https://github.com/MarvellEmbeddedProcessors/atf-marvell.git -b atf-v1.5-armada-18.12
-    git clone https://github.com/MarvellEmbeddedProcessors/binaries-marvell.git -b binaries-marvell-armada-18.12
-    git clone https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git -b mv_ddr-armada-18.12
-
-### Compile EDK2
-
-    cd build-edk2
-
-    export export WORKSPACE=$PWD
-    export PACKAGES_PATH=$PWD/edk2:$PWD/edk2-platforms:$PWD/edk2-non-osi
-	export GCC5_AARCH64_PREFIX=aarch64-linux-gnu-
-
-    make -C edk2/BaseTools
-    source edk2/edksetup.sh
-    build -a AARCH64 -b RELEASE -t GCC5 -p Platform/SolidRun/Armada80x0McBin/Armada80x0McBin.dsc -D X64EMU_ENABLE
-
-    ls Build/Armada80x0McBin-AARCH64/RELEASE_GCC5/FV/ARMADA_EFI.fd
-
-### Compile Final Image with ATF
-    cd build-edk2
-
-    export CROSS_COMPILE=aarch64-linux-gnu-
-
-    make -C atf-marvell \
-    		PLAT=a80x0_mcbin \
-    		MV_DDR_PATH=$PWD/mv-ddr-marvell \
-    		SCP_BL2=$PWD/binaries-marvell/mrvl_scp_bl2.img \
-    		BL33=$PWD/Build/Armada80x0McBin-AARCH64/RELEASE_GCC5/FV/ARMADA_EFI.fd \
-    		all fip
-
-    cp atf-marvell/build/a80x0_mcbin/release/flash-image.bin uefi-mcbin-spi.bin
+Source-code and instructions are available [here on GitHub](https://github.com/Josua-SR/armada-8040-uefi), with two branches: `develop` for the doubleshot, and `mcbinss` for the singleshot board variant.
 
 ## Install
 
