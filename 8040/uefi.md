@@ -45,4 +45,4 @@ First, copy the firmware binary to a FAT filesystem on an internal or removable 
 
 ### From U-Boot
 
-For installing the new firmware binary from U-Boot, follow the [instructions for writing U-Boot to SPI Flash](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287178828/A8040+U-Boot+and+ATF#to-SPI-Flash)
+For installing the new firmware binary from U-Boot, follow the [instructions for writing U-Boot to SPI Flash](https://github.com/SolidRun/documentation/blob/bsp/8040/u-boot.md#to-SPI-Flash)

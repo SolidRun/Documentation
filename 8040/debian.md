@@ -8,7 +8,7 @@ As a proof of concept and for prototyping purposes we provide the option to run 
 ## Reference Images
 
 Readily usable images of Debian are available at [images.solid-run.com](https://images.solid-run.com/8040/Debian)!
-They will work for any supported boot media, as long as U-Boot has previously been installed as per [the U-Boot page](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287178828/A8040+U-Boot+and+ATF): USB, SATA, microSD and the eMMC data partition.
+They will work for any supported boot media, as long as U-Boot has previously been installed as per [the U-Boot page](https://github.com/SolidRun/documentation/blob/bsp/8040/u-boot.md): USB, SATA, microSD and the eMMC data partition.
 As a shortcut we also offer board-specific variants for microSD cards that include a suitable U-Boot binary.
 
 **Default username and password are `debian` and `debian`** - with sudo privileges.
@@ -28,7 +28,7 @@ Previous images were created from a Shell Monster which we have published [here]
 
 ### Other block storage
 Functionally these images are also usable on **eMMC**, **USB** and **SATA**. In that case however U-Boot must be installed manually to start the system.
-Please refer to [our article on U-Boot for 8040](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287178828/A8040+U-Boot+and+ATF) for details.
+Please refer to [our article on U-Boot for 8040](https://github.com/SolidRun/documentation/blob/bsp/8040/u-boot.md) for details.
 
 ## Pure Debian with UEFI (upstream)
 
@@ -41,7 +41,7 @@ Running unmodified Debian is finally possible as per the release of version 11 c
 This section outlines all required steps for booting the official installer on SolidRun 8040-based hardware.
 For details and alternatives refer to [chapter 4](https://www.debian.org/releases/stable/arm64/ch04.en.html) in the [Debian GNU/Linux Installation Guide](https://www.debian.org/releases/stable/arm64/).
 
-**Note that the installation steps below that U-Boot has already been installed, see [the U-Boot page](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287178828/A8040+U-Boot+and+ATF) for details.**
+**Note that the installation steps below that U-Boot has already been installed, see [the U-Boot page](https://github.com/SolidRun/documentation/blob/bsp/8040/u-boot.md) for details.**
 
 1. Create bootable installer
    - network install
@@ -67,7 +67,7 @@ For details and alternatives refer to [chapter 4](https://www.debian.org/release
 
    - (Re-) Install U-Boot if necessary
 
-     If the boot media has been used as install target, U-Boot has to be reinstalled as documented on our [U-Boot page](https://solidrun.atlassian.net/wiki/spaces/developer/pages/287178828/A8040+U-Boot+and+ATF).
+     If the boot media has been used as install target, U-Boot has to be reinstalled as documented on our [U-Boot page](https://github.com/SolidRun/documentation/blob/bsp/8040/u-boot.md).
 
 5. Known Issues:
 
