@@ -22,7 +22,8 @@ Debian focuses on stability and security of its releases. As a result, new featu
 All images are available for download at https://images.solid-run.com/IMX6/Debian. Please scroll to the bottom to find a log of important changes.
 Several tools are available for writing them to block storage, including etcher.io, win32diskimager and dd. Please make sure to decompress them first!
 
-Installation also works through the [Ignition](https://developer.solid-run.com/knowledge-base/ignition/) installer: [Flash Ignition to an SD card](https://solidrun.atlassian.net/wiki/spaces/developer/pages/288129025/Flashing+an+SD+Card), then boot it on the device to download and install the latest Debian automatically.
+Installation also works through the Ignition installer: [Flash Ignition to an SD card](https://solidrun.atlassian.net/wiki/spaces/developer/pages/288129025/Flashing+an+SD+Card), then boot it on the device to download and install the latest Debian automatically.
+**Note:** Solid-Run stopped supporting "ignition", you can try the Debian/Yocto articles in the developer site.
 
 ### Install to eMMC
 

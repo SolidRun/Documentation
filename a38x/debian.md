@@ -183,7 +183,7 @@ This section describes a relatively painless procedure for installing the SolidR
 
 Installation instructions follow.
 
-1. Download an installation images and utilities archive from [here](https://developer.solid-run.com/wp-content/uploads/2018/10/clearfog-emmc-v3.tar.gz).
+1. Download an installation images and utilities archive from [here](https://solid-run-images.sos-de-fra-1.exo.io/A38X/clearfog-uart-installation-to-emmc-v3.tar.gz).
 2. Connect your x86 PC host to the ClearFog UART console on the micro-USB
 3. Copy the following files from the archive to the x86 PC:
    - kwboot
@@ -254,7 +254,7 @@ image on the Clearfog GTR eMMC storage. You will need the following items:
 Installation instructions follow.
 
 1. Download an installation images and utilities archive from
-   [here](https://developer.solid-run.com/wp-content/uploads/2020/01/clearfog-gtr-emmc.tar.gz)
+   [here](https://solid-run-images.sos-de-fra-1.exo.io/A38X/clearfog-gtr-uart-installation-to-emmc.tar.gz)
 
 2. Connect your x86 PC host to the ClearFog GTR UART console on the micro-USB
 

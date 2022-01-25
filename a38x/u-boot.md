@@ -404,7 +404,7 @@ The next bootlog should show up like this:
 
 1. remove RN5 (resistor array number 5) from the board. RN5 can be found near the M.2 connector on the bottom side of the board.
 
-   ![bottom view of clearfog board showing location of RN5](https://developer.solid-run.com/wp-content/uploads/2018/10/rn5.png)
+   ![bottom view of clearfog board showing location of RN5](../pictures/rn5.png?raw=true "Title")
 
 2. RN5 is there first place in order to force pull-up B2B_MPP57 (SPI Clock) on a pin on Mikrobus since one of it’s pins is also used as boot select reset strap. If Mikrobus is not used then this can be removed without worry. If Mikrobus is used then make sure that B2B_MPP57 is not pulled up or down.
 
