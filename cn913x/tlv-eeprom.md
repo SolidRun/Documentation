@@ -59,11 +59,17 @@ The EEPROM on CN913x CEX-7 Modules on i2c-0 at 0x50 is programmed with the follo
 - TLV_CODE_PART_NUMBER (mandatory)
   Identifying part number from ordering system (SKU) without BOM suffix (/0).
 - TLV_CODE_SERIAL_NUMBER (mandatory)
+- TLV_CODE_MAC_BASE (optional)
+  First MAC Address for the on-COM (SoC) network interface(s)
 - TLV_CODE_MANUF_DATE (mandatory)
   Manufacturing Date (MM/DD/YYYY HH:MM:SS)
 - TLV_CODE_DEVICE_VERSION (mandatory)
   Board Revision, incremented when parts or layout changes;
   MAJOR.MINOR revisions are encoded by storing MAJOR in the four most significant bits, MINOR in the four least significant bits.
+- TLV_CODE_PLATFORM_NAME
+  Family name for the SoC.
+- TLV_CODE_MAC_SIZE (optional)
+  Number of consecutive MAC Addresses starting from TLV_CODE_MAC_BASE. Usually 1.
 - TLV_CODE_MANUF_NAME (mandatory)
 - TLV_CODE_MANUF_COUNTRY (mandatory)
 - TLV_CODE_VENDOR_NAME (mandatory)
@@ -76,6 +82,7 @@ The EEPROM on CN913x CEX-7 Modules on i2c-0 at 0x50 is programmed with the follo
 - TLV_CODE_SERIAL_NUMBER: NG01848213000015
 - TLV_CODE_MANUF_DATE: 12/24/2022 07:35:59
 - TLV_CODE_DEVICE_VERSION: 0x12 (1.2)
+- TLV_CODE_PLATFORM_NAME: Octeon TX2
 - TLV_CODE_MANUF_NAME: Nistec
 - TLV_CODE_MANUF_COUNTRY: IL
 - TLV_CODE_VENDOR_NAME: SolidRun
@@ -92,6 +99,7 @@ tlv_eeprom set 0x22 'SRC9132S64D00GE008V12'
 tlv_eeprom set 0x23 'NG01848213000015'
 tlv_eeprom set 0x25 '12/24/2022 07:35:59'
 tlv_eeprom set 0x26 '0x12'
+tlv_eeprom set 0x28 'Octeon TX2'
 tlv_eeprom set 0x2b 'IMI'
 tlv_eeprom set 0x2c 'PH'
 tlv_eeprom set 0x2d 'SolidRun'
@@ -107,6 +115,8 @@ The EEPROM on CN913x SoMs on i2c-0 at 0x53 is programmed with the following TLV 
 - TLV_CODE_PART_NUMBER (mandatory)
   Identifying part number from ordering system (long SKU) without BOM suffix (/0).
 - TLV_CODE_SERIAL_NUMBER (mandatory)
+- TLV_CODE_MAC_BASE (optional)
+  First MAC Address for the on-COM (SoC) network interface(s)
 - TLV_CODE_MANUF_DATE (mandatory)
   Manufacturing Date (MM/DD/YYYY HH:MM:SS)
 - TLV_CODE_DEVICE_VERSION (mandatory)
@@ -114,6 +124,8 @@ The EEPROM on CN913x SoMs on i2c-0 at 0x53 is programmed with the following TLV 
   MAJOR.MINOR revisions are encoded by storing MAJOR in the four most significant bits, MINOR in the four least significant bits.
 - TLV_CODE_PLATFORM_NAME
   Family name for the SoC.
+- TLV_CODE_MAC_SIZE (optional)
+  Number of consecutive MAC Addresses starting from TLV_CODE_MAC_BASE. Usually 1.
 - TLV_CODE_MANUF_NAME (mandatory)
 - TLV_CODE_MANUF_COUNTRY (mandatory)
 - TLV_CODE_VENDOR_NAME (mandatory)
