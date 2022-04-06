@@ -1,6 +1,6 @@
-# iMX8M EEPROM Programming
+# iMX8MP EEPROM Programming
 
-Starting from April 01. 2022, the EEPROMs on Carriers, i.MX8M Plus SoMs and COM-Express Modules are being programmed with identifying information such as the product name and SKUs to allow for programmatic identification of hardware. The data is is structured according to the [ONIE TLV Standard](https://opencomputeproject.github.io/onie/design-spec/hw_requirements.html#board-eeprom-information-format).
+Starting from April 01. 2022, the EEPROMs on Carriers, i.MX8M Plus SoMs are being programmed with identifying information such as the product name and SKUs to allow for programmatic identification of hardware. The data is is structured according to the [ONIE TLV Standard](https://opencomputeproject.github.io/onie/design-spec/hw_requirements.html#board-eeprom-information-format).
 
 ## Carrier
 
