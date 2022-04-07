@@ -3,7 +3,8 @@
 ## i.MX8M Plus
 
 - **Debian**
-  - [Bullseye (testing) - SR Release 8 (latest)](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr8.md)
+  - [Bullseye - SR Release 9 (latest)](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr9.md)
+  - [Bullseye (testing) - SR Release 8](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr8.md)
   - [Bullseye (testing) - SR Release 7](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr7.md)
   - [Bullseye (testing) - SR Release 6](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr6.md)
   - [Bullseye (testing) - SR Release 5](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr5.md)
@@ -23,7 +24,8 @@
   - Source code coming soon
   - [Ready to boot snapshot image](https://images.solid-run.com/IMX8/Android)
 - **Linux**
-  - [5.4.47 (latest)](https://github.com/SolidRun/linux-stable/tree/linux-5.4.y-imx8)
+  - [5.10.72 (latest)](https://github.com/SolidRun/linux-stable/tree/lf-5.10.72-2.2.0-sr)
+  - [5.4.47](https://github.com/SolidRun/linux-stable/tree/linux-5.4.y-imx8)
 
 ## i.MX8M Mini
 
