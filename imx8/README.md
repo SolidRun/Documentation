@@ -42,6 +42,14 @@
   - [Bullseye (testing) - SR Release 2](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr2.md)
   - [Bullseye (testing) - SR Release 1](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr.md)
 
+## i.MX8M Nano
+
+- **Debian**
+  - [Bullseye - SR Release 10 (latest)](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr10.md)
+- **Buildroot based**
+  - [Buildroot based mini distribution - Source code](https://github.com/SolidRun/imx8mp_build/tree/imx8mn)
+  - [Buildroot based mini distribution - Ready to boot images](https://images.solid-run.com/IMX8/imx8mn_compact_build)
+
 ## i.MX8M Quad
 
 - **U-Boot**
