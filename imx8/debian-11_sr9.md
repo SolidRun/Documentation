@@ -1,4 +1,4 @@
-# SolidRun Debian 11 - Release 8
+# SolidRun Debian 11 - Release 9
 
 ## Summary
 
