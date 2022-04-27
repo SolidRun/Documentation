@@ -5,13 +5,15 @@ As a proof of concept and for prototyping purposes we provide the option to run 
 
 | Release | Clearfog base | Clearfog Pro | Clearfog GTR |
 | --- | --- | --- | --- |
-| 10 Buster  ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | Yes |
-|  9 Stretch ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | No |
-|  8 Jessie  ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | No |
+| 11 Bullseye ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | Yes |
+| 10 Buster   ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | Yes |
+|  9 Stretch  ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | No |
+|  8 Jessie   ([images.solid-run.com](https://images.solid-run.com/A38X/Debian)) | Yes | Yes | No |
 ||||
-| 10 Buster  ([debian.org](https://www.debian.org/)) | Yes | Yes | No |
-|  9 Stretch ([debian.org](https://www.debian.org/)) | Yes | Yes | No |
-|  8 Jessie  ([debian.org](https://www.debian.org/)) | No  | No  | No |
+| 11 Bullseye ([debian.org](https://www.debian.org/)) | Yes | Yes | No |
+| 10 Buster   ([debian.org](https://www.debian.org/)) | Yes | Yes | No |
+|  9 Stretch  ([debian.org](https://www.debian.org/)) | Yes | Yes | No |
+|  8 Jessie   ([debian.org](https://www.debian.org/)) | No  | No  | No |
 
 ## Reference Images
 Readily usable images of Debian are available at [images.solid-run.com](https://images.solid-run.com/A38X/Debian).
