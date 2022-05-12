@@ -153,7 +153,7 @@ So finally this is how a new configuration is applied:
 
 ### Download Source
     ROOTDIR=`pwd`    
-    git clone https://source.codeaurora.org/external/imx/linux-imx -b rel_imx_5.4.70_2.3.0
+    git clone https://source.codeaurora.org/external/imx/linux-imx -b rel_imx_5.4.47_2.2.0
 
  **Note:** Install and applay the Linux patches from here https://github.com/SolidRun/imx8mp_build/tree/imx8mn/patches/linux-imx |
 | --- |
