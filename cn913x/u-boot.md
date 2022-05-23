@@ -1,6 +1,6 @@
 ## Introduction
 
-This page describes how to build, install and update U-Boot for SolidRun Armada 8040-based devices.
+This page describes how to build, install and update U-Boot for SolidRun Marvell-CN913x-based devices.
 
 ## Prebuilt Binaries
 
@@ -8,7 +8,7 @@ Usable firmware binaries are available inside the `u-boot` sub-folder of any [cn
 
 There a variety of variants depending on SoC, and where U-Boot will be deployed:
 
-- The SoC is indicated in the filename, e.g. `u-boot-cn9132-cex7-A-mmc:1:0.bin` is for the CN9130.
+- The SoC is indicated in the filename, e.g. `u-boot-cn9132-cex7-A-mmc:1:0.bin` is for the CN9132.
 - The Carrier or Board follows the SoC name, e.g. `u-boot-cn9130-cf-base-mmc:1:2.bin` is for a Clearfog Base.
 - The Boot Media follows the carrier or board name, e.g. `u-boot-cn9130-cf-pro-spi.bin` targets SPI flash.
   MMC variants specify 2 numbers:
