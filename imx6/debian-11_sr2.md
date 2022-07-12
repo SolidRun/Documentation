@@ -328,8 +328,7 @@ From U-Boot console, interrupt boot by pressing any key during the `Hit any key 
 Then permanently choose the cbi device-tree variant:
 
     Hit any key to stop autoboot:  0
-    => setenv findfdt ';'
-    => setenv fdtfile imx6dl-hummingboard2-cbi-emmc-som-v15.dtb
+    => setenv is_cbi 1
     => saveenv
     => reset
 
