@@ -317,6 +317,11 @@ This will generate u-boot-spl-sdhc.kwb to be used on the Clearfog Pro when booti
 
        CONFIG_MVEBU_SPL_BOOT_DEVICE_SATA=y
 
+       # upstream U-Boot releases also need to explicitly enable sata support in spl
+       # CONFIG_SPL_SATA=y
+       # CONFIG_SPL_SATA_RAW_U_BOOT_USE_SECTOR=y
+       # CONFIG_SPL_SATA_RAW_U_BOOT_SECTOR=0x1
+
 **Note: The resulting binaries will carry the respective -sdhc/-spi/-emmc/-uart suffixes in the name.**
 
 ## Reconfigure PCIe as SATA, and SFP speed
