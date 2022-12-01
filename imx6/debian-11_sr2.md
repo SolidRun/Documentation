@@ -328,7 +328,7 @@ From U-Boot console, interrupt boot by pressing any key during the `Hit any key 
 Then permanently choose the cbi device-tree variant:
 
     Hit any key to stop autoboot:  0
-    => setenv is_cbi 1
+    => setenv is_cbi yes
     => saveenv
     => reset
 
