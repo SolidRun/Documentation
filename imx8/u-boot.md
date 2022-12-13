@@ -172,9 +172,9 @@ There are 4 options for MAC addresses to be sourced from:
 Priorities implemented in the SolidRun i.MX8MP U-Boot fork are as follows:
 1. U-Boot Environment variable always takes precedence:
 
-     print eth0addr
-     setenv eth0addr aa:bb:cc:dd:ee:ff
-     saveenv
+       print eth0addr
+       setenv eth0addr aa:bb:cc:dd:ee:ff
+       saveenv
 
 2. [TLV EEPROM](https://github.com/SolidRun/Documentation/blob/bsp/imx8/tlv-eeprom.md), if the `TLV_CODE_MAC_BASE` and `TLV_CODE_MAC_SIZE` fields are valid
 
