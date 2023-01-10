@@ -14,6 +14,12 @@
 - **Buildroot based**
   - [Buildroot based mini distribution - Source code](https://github.com/SolidRun/imx8mp_build)
   - [Buildroot based mini distribution - Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_build)
+- **Yocto Krikstone based on NXP BSPs release L5.15.x_x.x.x_MX8MP**
+    - [Source code] - coming son
+    - [Ready to boot images] - coming son
+- **Yocto Hardknott based on 5.10.x-BSP 2.x.x**
+    - [Source code](https://github.com/SolidRun/meta-solidrun-arm-imx8/tree/hardknott-imx8mp)
+    - [Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_yocto_hardknott-5.10.72-2.2.0))
 - **Yocto Gatesgarth based on 5.10.x-BSP 1.x.x**
     - [Source code](https://github.com/SolidRun/meta-solidrun-arm-imx8/tree/gatesgarth-imx8mp)
     - [Ready to boot images](https://images.solid-run.com/IMX8/imx8mp_yocto_gategarth-5.10.9-1.1.0)
