@@ -108,3 +108,14 @@ Here yocto provides clear instructions what should be done. Define appropriate v
 Alternatively a new recipe providing `virtual/bootloader` could be created.
 
 The solution for i.MX6 Cubox-i is to choose the appropriate uboot configuration file that is part of the upstream sources: `UBOOT_MACHINE = "mx6cuboxi_defconfig"`
+
+## Develop Source Code changes to an existing recipe
+
+The manual process consists of several steps that are not complex but annoying:
+- Download the source code *somewhere else*
+- Apply all current patches
+- Make changes
+- Generate new patch
+- copy new patch to yocto layer
+
+Luckily Yocto now has a utility for helping with this and related tasks: **The [devtool](https://docs.yoctoproject.org/ref-manual/devtool-reference.html)**.
