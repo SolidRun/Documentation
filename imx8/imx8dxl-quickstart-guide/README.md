@@ -18,7 +18,7 @@ Revision and Notes
 - USB-A male to USB-A male, preferably with 10kOhm resistor in VCC. Connect J1 on the "V2X Adapter" board, and the PC.
 - Connect 12V DC power source to J10 on the "V2X Adapter" board.
 
-TODO: Picture showing boards and cables, with labels.
+![Picture showing all components and cables required strictly for this guide](hw-setup.png)
 
 ### Boot Select
 
@@ -34,7 +34,7 @@ Ensure S1 DIP switch on the bottom of the carrier is configured to boot from eMM
 
 Start an application for serial console - such as [PuTTY](https://www.putty.org/) or [tio](https://github.com/tio/tio). Configure it for baud rate 115200 and the COMx or ttyUSBy interface representing the USB-A to micro-USB console connection.
 
-TODO: putty picture??
+![Picture showing PuTTY configuration](putty-settings.png)
 
 ### Power On
 
