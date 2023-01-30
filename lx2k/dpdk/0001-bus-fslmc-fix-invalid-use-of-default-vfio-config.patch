@@ -1,0 +1,61 @@
+From 56a3187c3469f3ca9eb2e18ba37ea9a04d9c5f8c Mon Sep 17 00:00:00 2001
+From: Romain Delhomel <romain.delhomel@6wind.com>
+Date: Tue, 24 May 2022 15:35:41 +0200
+Subject: [PATCH] bus/fslmc: fix invalid use of default vfio config
+
+At device probe, the fslmc bus driver calls rte_vfio_get_group_fd() to
+get a fd associated to a vfio group. This function first checks if the
+group is already opened, else it opens /dev/vfio/%u, and increases the
+number of active groups in default_vfio_cfg (which references the
+default vfio container).
+
+When adding the first group to a vfio_cfg, the caller is supposed to
+pick an IOMMU type and set up DMA mappings for container, as it's done
+by pci bus, but it is not done here. Instead, a new container is created
+and used.
+
+This prevents the pci bus driver, which use the default_vfio_cfg
+container, to configure the container because
+default_vfio_cfg->active_group > 1.
+
+This patch fixes the issue by always creating a new container (and its
+associated vfio_cfg) and bind the group to it.
+
+Fixes: a69f79300262 ("bus/fslmc: support multi VFIO group")
+Signed-off-by: Romain Delhomel <romain.delhomel@6wind.com>
+---
+ drivers/bus/fslmc/fslmc_vfio.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/bus/fslmc/fslmc_vfio.c b/drivers/bus/fslmc/fslmc_vfio.c
+index 54b989310aa4..c72ff38fd33c 100644
+--- a/drivers/bus/fslmc/fslmc_vfio.c
++++ b/drivers/bus/fslmc/fslmc_vfio.c
+@@ -1055,6 +1055,7 @@ fslmc_vfio_setup_group(void)
+ {
+ 	int groupid;
+ 	int ret;
++	int vfio_container_fd;
+ 	struct vfio_group_status status = { .argsz = sizeof(status) };
+ 
+ 	/* if already done once */
+@@ -1073,8 +1074,15 @@ fslmc_vfio_setup_group(void)
+ 		return 0;
+ 	}
+ 
++	ret = rte_vfio_container_create();
++	if (ret < 0) {
++		DPAA2_BUS_ERR("Failed to open VFIO container");
++		return ret;
++	}
++	vfio_container_fd = ret;
++
+ 	/* Get the actual group fd */
+-	ret = rte_vfio_get_group_fd(groupid);
++	ret = rte_vfio_container_group_bind(vfio_container_fd, groupid);
+ 	if (ret < 0)
+ 		return ret;
+ 	vfio_group.fd = ret;
+-- 
+2.30.2
+
