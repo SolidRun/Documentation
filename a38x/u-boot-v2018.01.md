@@ -1,3 +1,7 @@
+## Download Binaries
+
+We are automatically building binaries whenever code is pushed to our [U-Boot repository on github](https://github.com/SolidRun/u-boot/tree/v2018.01-solidrun-a38x), currently tracking the **v2018.01-solidrun-a38x** branch. Please find the results at https://images.solid-run.com/A38X/U-Boot.
+
 ## Installing automatically (SPI, eMMC, M.2 SSD)
 
 **This section assumes that you already have a version of U-Boot >= 2018.01 running on your device! If not, there are two options:**
@@ -99,86 +103,25 @@ Drop to the U-Boot console, and execute these command for loading the u-boot bin
     sf probe
     # you may want to erase the first 1M, or just the environment:
     # sf erase 0 0x100000
-    sf update 0x200000 0 $filesize
+    sf write 0x200000 0 $filesize
 
-### eMMC (data partition)
+### eMMC
 
-**This section assumes that you already have a version of U-Boot >= 2018.01 running on your device! If not, there are two options:**
+**This section assumes that you already have Linux running on your device! If not, there are three options:**
 
-1. Install U-Boot to SATA (m.2) ssd first
-2. Boot from UART ([booting from uart](#booting-from-uart))
+1. Install a system to a removable sdcard first
+2. Boot a system via network from existing u-boot on your device
+3. Boot U-Boot from UART (booting from uart), then boot a system via network
 
-The BootROM loads U-Boot from either sector 0 or 4096. Sector 0 conflicts with MBR (i.e. standard partitions can not be created) - therefore 4096 is used.
-Environment lives at sectors 1920-2048. Note there may be conflicts with standard partitions if they start before sector 8192.
+First remove write protection from boot0 partition:
 
-Place the appropriate U-Boot binary **built for eMMC data partition** on a USB drive formatted with fat32 or ext4.
-Then execute the following commands for loading u-boot to memory, and then writing it to the eMMC. Note that alternatively the u-boot binary can also be loaded from the network, sata drive or eMMC.
+    echo 0 | sudo tee /sys/block/mmcblk0boot0/force_ro
 
-    usb start
-    load usb 0:1 0x200000 /u-boot-spl-emmc.kwb
-    setexpr nblocks 0x$filesize + 0x1ff
-    setexpr nblocks 0x$nblocks / 0x200
-    mmc write 0x200000 0x1000 0x$nblocks
-    # you may want to erase the environment:
-    # mmc erase 0x780 0x80
+Now write U-Boot to the start of boot0:
 
-Finally configure the eMMC Boot partition accordinglya as outlined in the next section.
+    sudo dd if=u-boot-spl-mmc.kwb of=/dev/mmcblk0boot0 conv=sync
 
-### eMMC (boot0 partition)
-
-Currently not supported.
-
-<s>
-**This section assumes that you already have a version of U-Boot >= 2018.01 running on your device! If not, there are two options:**
-
-1. Install U-Boot to SATA (m.2) ssd first
-2. Boot from UART ([booting from uart](#booting-from-uart))
-
-The BootROM loads U-Boot from either sector 0 or 4096. Sector 0 conflicts with MBR (i.e. standard partitions can not be created) - therefore 4096 is used.
-Environment lives at sectors 1920-2048. Note there may be conflicts with standard partitions if they start before sector 8192.
-
-Place the appropriate U-Boot binary **built for eMMC boot0 partition** on a USB drive formatted with fat32 or ext4.
-Then execute the following commands for loading u-boot to memory, and then writing it to the eMMC. Note that alternatively the u-boot binary can also be loaded from the network, sata drive or eMMC.
-
-    usb start
-    load usb 0:1 0x200000 /u-boot-spl-emmc-boot0.kwb
-    setexpr nblocks 0x$filesize + 0x1ff
-    setexpr nblocks 0x$nblocks / 0x200
-    mmc dev 0 1
-    mmc write 0x200000 0x1000 0x$nblocks
-    # you may want to erase the environment:
-    # mmc erase 0x780 0x80
-
-Finally configure the eMMC Boot partition accordinglya as outlined in the next section.
-</s>
-
-### eMMC (boot1 partition)
-
-Currently not supported.
-
-<s>
-**This section assumes that you already have a version of U-Boot >= 2018.01 running on your device! If not, there are two options:**
-
-1. Install U-Boot to SATA (m.2) ssd first
-2. Boot from UART ([booting from uart](#booting-from-uart))
-
-The BootROM loads U-Boot from either sector 0 or 4096. Sector 0 conflicts with MBR (i.e. standard partitions can not be created) - therefore 4096 is used.
-Environment lives at sectors 1920-2048. Note there may be conflicts with standard partitions if they start before sector 8192.
-
-Place the appropriate U-Boot binary **built for eMMC boot1 partition** on a USB drive formatted with fat32 or ext4.
-Then execute the following commands for loading u-boot to memory, and then writing it to the eMMC. Note that alternatively the u-boot binary can also be loaded from the network, sata drive or eMMC.
-
-    usb start
-    load usb 0:1 0x200000 /u-boot-spl-emmc-boot1.kwb
-    setexpr nblocks 0x$filesize + 0x1ff
-    setexpr nblocks 0x$nblocks / 0x200
-    mmc dev 0 2
-    mmc write 0x200000 0x1000 0x$nblocks
-    # you may want to erase the environment:
-    # mmc erase 0x780 0x80
-
-Finally configure the eMMC Boot partition accordinglya as outlined in the next section.
-</s>
+**Note: It is still possible that the device will not boot from eMMC boot0. Usually in such case the eMMC has been configured to boot from boot1 or the data partition. The next section explains how this can be changed.**
 
 ## Configure eMMC Boot Partition
 
@@ -335,7 +278,7 @@ Now turn on, or reset the board. You should see output similar to the following 
 
 These are the instructions to fetch the code, and build a binary:
 
-    git clone --branch v2022.01-solidrun-a38x https://github.com/SolidRun/u-boot.git u-boot-clearfog
+    git clone --branch v2018.01-solidrun-a38x https://github.com/SolidRun/u-boot.git u-boot-    clearfog
     cd u-boot-clearfog
     export CROSS_COMPILE=<Set toolchain prefix to your toolchain>
     # optionally add options to configs/clearfog_defconfig
@@ -344,7 +287,7 @@ These are the instructions to fetch the code, and build a binary:
     # make menuconfig
     make
 
-This will generate u-boot-spl.kwb to be used on the Clearfog Pro when booting from an sdcard. To target the Clearfog Base and/or other boot media, set the following options in *configs/clearfog_defconfig* or through menuconfig:
+This will generate u-boot-spl-sdhc.kwb to be used on the Clearfog Pro when booting from an sdcard. To target the Clearfog Base and/or other boot media, set the following options in *configs/clearfog_defconfig* or through menuconfig:
 
 - Clearfog Pro (default)
 
@@ -352,71 +295,34 @@ This will generate u-boot-spl.kwb to be used on the Clearfog Pro when booting fr
 
 - Clearfog Base
 
-       # CONFIG_TARGET_CLEARFOG is not set
        CONFIG_TARGET_CLEARFOG_BASE=y
 
 - SD-Card (default)
 
-       CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR=0x0
-       CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_DATA_PART_OFFSET=0x1
-
-- eMMC (data partition)
-
-       CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR=0x0
-       CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_DATA_PART_OFFSET=0x1000
-
-- eMMC (boot0 partition)
-
-       CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR=0x0
-       CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_DATA_PART_OFFSET=0x1000
-       CONFIG_SYS_MMC_ENV_PART=1
-
-- eMMC (boot1 partition)
-
-       CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR=0x0
-       CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_DATA_PART_OFFSET=0x1000
-       CONFIG_SYS_MMC_ENV_PART=2
-
-- M.2 SSD
-
-       # CONFIG_MVEBU_SPL_BOOT_DEVICE_MMC is not set
-       CONFIG_MVEBU_SPL_BOOT_DEVICE_SATA=y
-       # CONFIG_SPL_MMC is not set
-       CONFIG_SPL_SATA=y
-       SPL_SATA_RAW_U_BOOT_USE_SECTOR=y
-       SPL_SATA_RAW_U_BOOT_SECTOR=0x1
-       CONFIG_ENV_IS_NOWHERE=y
-       # CONFIG_ENV_IS_IN_MMC is not set
+       CONFIG_MVEBU_SPL_BOOT_DEVICE_SDHC=y
 
 - SPI
 
        CONFIG_MVEBU_SPL_BOOT_DEVICE_SPI=y
-       # CONFIG_MVEBU_SPL_BOOT_DEVICE_MMC is not set
-       # CONFIG_SPL_MMC is not set
-       CONFIG_SPL_SPI_FLASH_SUPPORT=y
-       CONFIG_SPL_SPI=y
-       CONFIG_SPL_SPI_FLASH_TINY=y
-       CONFIG_SPL_SPI_LOAD=y
-       CONFIG_SYS_SPI_U_BOOT_OFFS=0x0
-       # CONFIG_ENV_IS_IN_MMC is not set
-       CONFIG_ENV_IS_IN_SPI_FLASH=y
-       # CONFIG_ENV_SECT_SIZE_AUTO is not set
-       # CONFIG_USE_ENV_SPI_BUS is not set
-       # CONFIG_USE_ENV_SPI_CS is not set
-       # CONFIG_USE_ENV_SPI_MAX_HZ is not set
-       # CONFIG_USE_ENV_SPI_MODE is not set
-       # CONFIG_ENV_SPI_EARLY is not set
-       CONFIG_ENV_ADDR=0x0
+
+- eMMC
+
+       CONFIG_MVEBU_SPL_BOOT_DEVICE_MMC=y
 
 - UART
 
-       # CONFIG_MVEBU_SPL_BOOT_DEVICE_MMC is not set
        CONFIG_MVEBU_SPL_BOOT_DEVICE_UART=y
-       # CONFIG_SPL_MMC is not set
-       CONFIG_ENV_IS_NOWHERE=y
-       # CONFIG_ENV_IS_IN_MMC is not set
 
-**Note: The resulting binaries share the same filename regardless of configuration.**
+- M.2 SSD
+
+       CONFIG_MVEBU_SPL_BOOT_DEVICE_SATA=y
+
+       # upstream U-Boot releases also need to explicitly enable sata support in spl
+       # CONFIG_SPL_SATA=y
+       # CONFIG_SPL_SATA_RAW_U_BOOT_USE_SECTOR=y
+       # CONFIG_SPL_SATA_RAW_U_BOOT_SECTOR=0x1
+
+**Note: The resulting binaries will carry the respective -sdhc/-spi/-emmc/-uart suffixes in the name.**
 
 ## Reconfigure PCIe as SATA, and SFP speed
 
@@ -530,40 +436,40 @@ With this patch only one DDR device is being used as x16 instead of two DDR devi
 ### Supporting 2GByte memory configuration
 
 It is possible to order from SolidRun 2GByte memory configuration where the support is using twin die memory configuration.
+
 Twin die is a configuration of DDR components where there are two DDR dies in the same package and each gets it’s own chip-select control.
 
-If the SoM EEPROM has not been programmed with the extended TLV data, support can instead be added by applying this patch:
-
-    From 3538b4c187769b9063c16779378efb25c7b1bd39 Mon Sep 17 00:00:00 2001
-    From: Josua Mayer <josua@solid-run.com>
-    Date: Mon, 18 Jul 2022 20:10:18 +0300
-    Subject: [PATCH] arm: mvebu: clearfog: default to two ddr channels
-
-    Some industrial SoMs have already been produced with twin die memory,
-    Without their EEPROMs indicating this.
-    Change the default to two channels to accommodate these modules.
-
-    Signed-off-by: Josua Mayer <josua@solid-run.com>
-    ---
-     board/solidrun/clearfog/clearfog.c | 2 +-
-     1 file changed, 1 insertion(+), 1 deletion(-)
-
     diff --git a/board/solidrun/clearfog/clearfog.c b/board/solidrun/clearfog/clearfog.c
-    index 0ebc73bc370..d97a94f1b9c 100644
+    index 34dc50d94b..aed274e941 100644
     --- a/board/solidrun/clearfog/clearfog.c
     +++ b/board/solidrun/clearfog/clearfog.c
-    @@ -167,11 +167,11 @@ struct mv_ddr_topology_map *mv_ddr_topology_map_get(void)
-     	}
+    @@ -93,11 +93,11 @@ int hws_board_topology_load(struct serdes_map **serdes_map_array, u8 *count)
+     static struct hws_topology_map board_topology_map = {
+     	0x1, /* active interfaces */
+     	/* cs_mask, mirror, dqs_swap, ck_swap X PUPs */
+    -	{ { { {0x1, 0, 0, 0},
+    -	      {0x1, 0, 0, 0},
+    -	      {0x1, 0, 0, 0},
+    -	      {0x1, 0, 0, 0},
+    -	      {0x1, 0, 0, 0} },
+    +	{ { { {0x3, 0, 0, 0},
+    +	      {0x3, 0, 0, 0},
+    +	      {0x3, 0, 0, 0},
+    +	      {0x3, 0, 0, 0},
+    +	      {0x3, 0, 0, 0} },
+     	    SPEED_BIN_DDR_1600K,	/* speed_bin */
+     	    BUS_WIDTH_16,		/* memory_width */
+     	    MEM_4G,			/* mem_size */
 
-     	switch (cf_tlv_data.ram_channels) {
-    -	default:
-     	case 1:
-     		for (uint8_t i = 0; i < 5; i++)
-     			ifp->as_bus_params[i].cs_bitmask = 0x1;
-     		break;
-    +	default:
-     	case 2:
-     		for (uint8_t i = 0; i < 5; i++)
-     			ifp->as_bus_params[i].cs_bitmask = 0x3;
-    --
-    2.35.3
+## Legacy U-Boot (2013.01)
+
+### Customizing u-boot for a custom board
+
+The easiest method to customize u-boot for a custom board using the A388 SOM is to start with the clearfog board configuration and modifying it to the custom board.
+
+The following are high level instructions how to do that –
+
+- Read the pin muxing from the A388 Documents
+- Every MPP can be configured to the required function in the following code – https://github.com/SolidRun/u-boot-armada38x/blob/u-boot-2013.01-15t1-clearfog/board/mv_ebu/a38x/armada_38x_family/boardEnv/mvBoardEnvSpec38x.h#L102
+- Modifying the high speed SERDES lines is done here – https://github.com/SolidRun/u-boot-armada38x/blob/u-boot-2013.01-15t1-clearfog/tools/marvell/bin_hdr/src_phy/a38x/mvHighSpeedTopologySpec-38x.c#L89
+- Modifying the L2 switch (if it’s available), number of Ethernet ports, I/O expander etc… is done here – https://github.com/SolidRun/u-boot-armada38x/blob/u-boot-2013.01-15t1-clearfog/board/mv_ebu/a38x/armada_38x_family/boardEnv/mvBoardEnvSpec38x.c#L214
