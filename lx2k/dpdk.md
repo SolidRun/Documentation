@@ -8,7 +8,7 @@
 
 ### Download Sources
 
-    git clone https://source.codeaurora.org/external/qoriq/qoriq-components/dpdk
+    git clone https://github.com/nxp-qoriq/dpdk
     cd dpdk
     git reset --hard LSDK-21.08
     wget https://github.com/SolidRun/Documentation/raw/bsp/lx2k/dpdk/0001-bus-fslmc-fix-invalid-use-of-default-vfio-config.patch
