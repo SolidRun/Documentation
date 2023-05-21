@@ -8,12 +8,13 @@ Revision and Notes
 | Date | Owner | Revision | Notes |
 | --- | --- | --- | --- |
 | Jan 12, 2023 | | 0 | Draft |
+| May 21, 2023 | | 1 | Initial Release |
 
 ## Hardware Setup
 
 ### Connections
 
-- Unnamed Cable: Connect Carrier to "V2X Adapter" board.
+- Micro-Fit Cable: Connect Carrier to "V2X Adapter" board.
 - USB-A male to micro-USB male cable for console access. Connect to J5 on the "V2X Adapter" board, and the PC.
 - USB-A male to USB-A male, preferably with 10kOhm resistor in VCC. Connect J1 on the "V2X Adapter" board, and the PC.
 - Connect 12V DC power source to J10 on the "V2X Adapter" board.

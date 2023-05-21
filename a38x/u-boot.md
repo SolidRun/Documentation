@@ -369,12 +369,14 @@ This will generate u-boot-spl.kwb to be used on the Clearfog Pro when booting fr
 
        CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR=0x0
        CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_DATA_PART_OFFSET=0x1000
+       # CONFIG_SPL_MMC is not set
        CONFIG_SYS_MMC_ENV_PART=1
 
 - eMMC (boot1 partition)
 
        CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_SECTOR=0x0
        CONFIG_SYS_MMCSD_RAW_MODE_U_BOOT_DATA_PART_OFFSET=0x1000
+       # CONFIG_SPL_MMC is not set
        CONFIG_SYS_MMC_ENV_PART=2
 
 - M.2 SSD
