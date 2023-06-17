@@ -22,8 +22,13 @@ This value can be written directoy to the i2c bus from Linux:
 
 or via the driver in sysfs
 
+    # LX2160 CEX
     echo 64000 > /sys/devices/platform/soc/2000000.i2c/i2c-0/i2c-4/4-0018/hwmon/hwmon1/temp2_auto_point2_temp
     echo 101000 > /sys/devices/platform/soc/2000000.i2c/i2c-0/i2c-4/4-0018/hwmon/hwmon1/temp2_auto_point3_temp
+
+    # LX2162 SoM
+    echo 64000 > /sys/devices/platform/soc/2000000.i2c/i2c-0/0-0018/hwmon/hwmon8/temp2_auto_point2_temp
+    echo 101000 > /sys/devices/platform/soc/2000000.i2c/i2c-0/0-0018/hwmon/hwmon8/temp2_auto_point3_temp
 
 ### Thermal thresholds
 
