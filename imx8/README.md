@@ -3,7 +3,8 @@
 ## i.MX8M Plus
 
 - **Debian**
-  - [Bullseye - SR Release 9 (latest)](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr9.md)
+  - [Bullseye - SR Release 11 (latest)](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr9.md)
+  - [Bullseye - SR Release 9](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr9.md)
   - [Bullseye (testing) - SR Release 8](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr8.md)
   - [Bullseye (testing) - SR Release 7](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr7.md)
   - [Bullseye (testing) - SR Release 6](https://github.com/SolidRun/documentation/blob/bsp/imx8/debian-11_sr6.md)
