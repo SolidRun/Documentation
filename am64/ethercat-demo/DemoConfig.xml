@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <Common>
+    <RASEnabled>1</RASEnabled>
+    <RASPort>6000</RASPort>
+    <BusCycleTime>
+      <!--Bus cycle time in microseconds, if auxiliary clock not used-->1000</BusCycleTime>
+    <AuxClk>
+      <!--Auxiliary clock period in microseconds, 0 = not used, -->0</AuxClk>
+    <CpuAffinity>
+      <!--CPU affinity, 0 = first CPU, 1 = second, ...-->0</CpuAffinity>
+    <LinkLayer>
+      <!---linklayer instance polling-->
+      <!--linklayer: -i8255x  = Intel Pro/100 family-->
+      <!--linklayer: -i8254x  = Intel Pro/1000 family-->
+      <!--linklayer: -rtl8139 = Realtek 8139 family-->
+      <!--linklayer: -rtl8169 = Realtek 8111/8169 family-->
+      <!--instance: 1=first device instance, 2=second ..-->
+      <!--polling:  0=interrupt mode, 1=polling mode-->-rtl8169 1 1</LinkLayer>
+    <ENIFileName>
+      <!--File name and path of ENI file-->Yaskawa_SGDV_1ms.xml</ENIFileName>
+    <VerbosityLevel>
+      <!--Set verbosity level, 0=off (default), 1..n=more messages-->2</VerbosityLevel>
+    <DemoDuration>
+      <!--Duration of demo application in seconds, 0 = forever-->60</DemoDuration>
+    <PerfMeasurement>
+      <!--Enable job measurement-->1</PerfMeasurement>
+  </Common>
+  <MotionDemo>
+    <!--Parameters MotionDemo-->
+    <NoDCMBusShift>
+      <!--Disable DCM bus shift controller-->1</NoDCMBusShift>
+    <DCMCtlSetVal>
+      <!--DCMCtlSetVal: DCM controller set value in nanosec-->500000</DCMCtlSetVal>
+    <CmdMode>
+      <!--Enable command mode: Demo gets commands from EC-STA-->1</CmdMode>
+    <Drive1>
+      <Address>
+        <!--EtherCAT address e. g. 1001-->1001</Address>
+      <OperationMode>
+        <!--Mode of Operation, Index 0x6060-->8</OperationMode>
+      <IncPerMM>
+        <!--Increments per mm-->10000</IncPerMM>
+      <Acc>
+        <!--Acceleration mm/sec^2-->800</Acc>
+      <Dec>
+        <!--Deceleration mm/sec^2-->1000</Dec>
+      <Jerk>
+        <!--Jerk mm/sec^3-->0</Jerk>
+      <Vel>
+        <!--Velocity mm/sec-->2000</Vel>
+      <Distance>
+        <!--Distance mm-->100</Distance>
+      <PositionWindow>
+        <!--In Position Window [INC]-->10</PositionWindow>
+      <VelocityGain>
+        <!--Gain-->25</VelocityGain>
+      <TorqueGain>
+        <!--Gain-->0</TorqueGain>
+      <IdxStatus>
+        <!--Index Statusword: Default 0x6041-->0x6041</IdxStatus>
+      <IdxControl>
+        <!--Index Controlword: Default 0x6040 -->0x6040</IdxControl>
+      <IdxPosact>
+        <!--Index Position actual: Default 0x6064 -->0x6064</IdxPosact>
+      <IdxTargetpos>
+        <!--Index Target Position: Default 0x607A -->0x607A</IdxTargetpos>
+      <IdxTargetvel>
+        <!--Index Target Velocity: Default 0x60FF -->0x60FF</IdxTargetvel>
+      <IdxMode>
+        <!--Index Mode of Operation: Default 0x6060 -->0x6060</IdxMode>
+    </Drive1>
+    <Drive2>
+      <Address>
+        <!--EtherCAT address: Not used=0-->0
+      </Address>
+      <OperationMode>
+        <!--Mode of Operation, Index 0x6060-->8
+      </OperationMode>
+      <IncPerMM>
+        <!--Increments per mm-->10000
+      </IncPerMM>
+      <Acc>
+        <!--Acceleration mm/sec^2-->800
+      </Acc>
+      <Dec>
+        <!--Deceleration mm/sec^2-->1000
+      </Dec>
+      <Jerk>
+        <!--Jerk mm/sec^3-->0
+      </Jerk>
+      <Vel>
+        <!--Velocity mm/sec-->2000
+      </Vel>
+      <Distance>
+        <!--Distance mm-->100
+      </Distance>
+      <PositionWindow>
+        <!--In Position Window [INC]-->10</PositionWindow>
+      <VelocityGain>
+        <!--Gain-->25</VelocityGain>
+      <TorqueGain>
+        <!--Gain-->0</TorqueGain>
+      <IdxStatus>
+        <!--Index Statusword: Default 0x6041-->0x6041</IdxStatus>
+      <IdxControl>
+        <!--Index Controlword: Default 0x6040 -->0x6040</IdxControl>
+      <IdxPosact>
+        <!--Index Position actual: Default 0x6064 -->0x6064</IdxPosact>
+      <IdxTargetpos>
+        <!--Index Target Position: Default 0x607A -->0x607A</IdxTargetpos>
+      <IdxTargetvel>
+        <!--Index Target Velocity: Default 0x60FF -->0x60FF</IdxTargetvel>
+      <IdxMode>
+        <!--Index Mode of Operation: Default 0x6060 -->0x6060</IdxMode>
+    </Drive2>
+  </MotionDemo>
+</Config>
