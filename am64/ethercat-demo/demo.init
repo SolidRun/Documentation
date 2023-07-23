@@ -1,0 +1,28 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          demo
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start EtherCAT demo
+# Description:       Enable EtherCAT demo.
+### END INIT INFO
+
+PID=/opt/acontis/demo.pid
+
+case $1 in
+start)
+	start-stop-daemon -S -b -m -q -p "$PID" -x "/opt/acontis/demo.sh"
+	;;
+stop)
+	start-stop-daemon -K -b -m -q -s KILL -p "$PID" -x "/opt/acontis/demo.sh"
+	;;
+*)
+	echo Usage: start
+	exit 1
+	;;
+esac
+
+exit 0

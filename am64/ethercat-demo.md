@@ -73,8 +73,8 @@ Firmware is programmed to the SPI flash permanently to survive power cycles usin
 ### Master Software Installation
 
 1. Create bootable microSD:
-   - Download https://images.solid-run.com/AM64X/ti_am64x_build/20230521-222ee62/microsd-222ee62-buildroot.img.xz
-   - write microsd-222ee62-buildroot.img.xz *block-by-block* to a microsd card, e.g. using [etcher.io](https://etcher.io/)
+   - Download https://images.solid-run.com/AM64X/ti_am64x_build/20230723-384041c/microsd-384041c-buildroot.img.xz
+   - write microsd-384041c-buildroot.img.xz *block-by-block* to a microsd card, e.g. using [etcher.io](https://etcher.io/)
 
 2. Power-on the unit:
   - Ensure DIP switches are set for microSD (000101 : 0 = off, 1 = on).
@@ -298,4 +298,41 @@ acontis EC-Engineer facilitates GUI Control of subordinates on the EtherCAT netw
 
 ### Automatic Startup (unattended)
 
-TODO: System service / log files for automatic startup & remote configuration / debugging.
+For Demonstration environments and startup can be automated, with logging and remote access for debugging purposes.
+
+#### Installation
+
+1. auto-start management interface (`eth0`) with dhcp, for remote access by ssh/sftp.
+
+   Append to `/etc/network/interfaces`:
+
+   ```
+   auto eth0
+   iface eth0 inet dhcp
+   ```
+
+2. Install system service:
+
+   ```
+   wget -O /opt/acontis/demo.sh https://github.com/SolidRun/Documentation/raw/bsp/am64/ethercat-demo/demo.sh
+   wget -O /etc/init.d/S99demo https://github.com/SolidRun/Documentation/raw/bsp/am64/ethercat-demo/demo.init
+   chmod 755 /opt/acontis/demo.sh /etc/init.d/S99demo
+   ```
+
+#### Usage
+
+- After reboot ethercat demo should **start automatically** as soon as link is detected on interface `eth2`.
+
+- **Logs** are available at `/opt/acontis/demo.log`, `/opt/acontis/demo.log.old`, `/opt/acontis/master*.log` and `/opt/acontis/master-motion*.log`.
+
+- **motion demo** can be **activated** by:
+
+  - install network configuration file `/opt/acontis/Bin/Linux/aarch64/eni.xml`
+  - install motion demo configuration file `/opt/acontis/Bin/Linux/aarch64/DemoConfig.xml`
+  - create (empty) file `/opt/acontis/motion.txt`
+
+- **motion demo** can be **deactivated** by:
+
+  - delete (empty) file `/opt/acontis/motion.txt`
+
+- remote access recommended via `ssh` or `FileZilla`
