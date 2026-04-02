@@ -6,6 +6,7 @@ Database of SFP modules tested on SolidRun ARM based products.
 
 | Part Number | Vendor | Description | Notes | Links |
 | --- | --- | --- | --- | --- |
+| ASF-10G-T | [10Gtek](https://www.10gtek.com/) | 100M/1G/2.5G/5G/10G NBase-T RJ45 Module | | |
 | ASA-SFP-RJ45 | AsahiNet | 10/100/1GBase-T RJ45 Module | | |
 | AFBR-57R5AEZ | Avago | 1G SFP Fiber Module | | |
 | GLC-T | Cisco | 10/100/1GBase-T RJ45 Module | <ul><li>2025-09-29: requires kernel patch, work in progress</li></ul> | <ul><li>[LKML cisco-1g-sfp-phy-features-v1](https://lore.kernel.org/r/20250823-cisco-1g-sfp-phy-features-v1-1-3b3806b89a22@solid-run.com)</li></ul> |
@@ -60,9 +61,9 @@ Database of SFP modules tested on SolidRun ARM based products.
 
 | Part Number | Vendor | Description | Notes | Links |
 | --- | --- | --- | --- | --- |
-| ASF85-24-X2 | 10Gtek| 1G SFP Fiber Module | | |
-| AXS85-192-M3 | 10Gtek | 10G SFP+ Fiber Module | | |
-| CAB-10GSFP-P1M | 10Gtek | 10G Direct Attach Cable | | |
+| ASF85-24-X2 | [10Gtek](https://www.10gtek.com/) | 1G SFP Fiber Module | | |
+| AXS85-192-M3 | [10Gtek](https://www.10gtek.com/) | 10G SFP+ Fiber Module | | |
+| CAB-10GSFP-P1M | [10Gtek](https://www.10gtek.com/) | 10G Direct Attach Cable | | |
 | FTLX8571D3BCL | Finisar | 10G SFP+ Fiber Module | | |
 | LX1801CNR | Linktel | 10/100/1GBase-T RJ45 Module | | |
 | WO-SWS-1213-003K | Wave Optics | 1G SFP Fiber Module | | |
